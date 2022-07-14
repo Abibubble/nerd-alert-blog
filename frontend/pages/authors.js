@@ -1,8 +1,11 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
+import getAuthors from '../services/author-svc';
 
 export default function Authors() {
+	let authors = getAuthors();
+
 	return (
 		<>
 			<Head>
@@ -43,6 +46,12 @@ export default function Authors() {
 			</header>
 			<main className={styles.main}>
 				<h1 className={styles.title}>NerdAlert Authors</h1>
+
+				<p>Authors starts here</p>
+				{Object.entries(authors).map(([key, author]) => (
+					<p key={key}>{author.attributes.Name}</p>
+				))}
+				<p>Authors ends here</p>
 
 				<div className={styles.grid}>
 					<a href="https://nextjs.org/docs" className={styles.card}>

@@ -4,8 +4,7 @@
   "info": {
     "singularName": "author",
     "pluralName": "authors",
-    "displayName": "Author",
-    "description": ""
+    "displayName": "Author"
   },
   "options": {
     "draftAndPublish": true
@@ -16,17 +15,18 @@
       "type": "string",
       "required": true
     },
-    "Avatar": {
-      "type": "media",
-      "multiple": true,
-      "required": true,
-      "allowedTypes": [
-        "images"
-      ]
-    },
     "AboutYou": {
-      "type": "richtext",
-      "required": true
+      "type": "richtext"
+    },
+    "Avatar": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }
