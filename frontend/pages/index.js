@@ -21,7 +21,6 @@ export default function Home() {
 							className={styles.logo}
 							src="/logo.png"
 							alt="NerdAlert Logo, constisting of an icon of a laptop on a purple background with the text 'NerdAlert'"
-							height={64}
 							layout="fill"
 							objectFit="contain"
 						/>
