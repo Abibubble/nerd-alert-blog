@@ -46,26 +46,78 @@ export default function Home() {
 
 				<div className={styles.grid}>
 					<a href="https://nextjs.org/docs" className={styles.card}>
-						<h2>Documentation &rarr;</h2>
-						<p>Find in-depth information about Next.js features and API.</p>
+						<span className={styles.cardImageContainer}>
+							<Image
+								className={styles.cardImage}
+								src="/logo.png"
+								alt="NerdAlert Logo, constisting of an icon of a laptop on a purple background with the text 'NerdAlert'"
+								layout="fill"
+								objectFit="contain"
+							/>
+						</span>
+						<h2>Blog title</h2>
+						<p>Small description of the blog will go here</p>
+						<p className={styles.authorName}>Author name here</p>
 					</a>
 
-					<a
-						href="https://github.com/vercel/next.js/tree/canary/examples"
-						className={styles.card}
-					>
-						<h2>Examples &rarr;</h2>
-						<p>Discover and deploy boilerplate example Next.js projects.</p>
+					<a href="https://nextjs.org/docs" className={styles.card}>
+						<span className={styles.cardImageContainer}>
+							<Image
+								className={styles.cardImage}
+								src="/logo.png"
+								alt="NerdAlert Logo, constisting of an icon of a laptop on a purple background with the text 'NerdAlert'"
+								layout="fill"
+								objectFit="contain"
+							/>
+						</span>
+						<h2>Blog title</h2>
+						<p>Small description of the blog will go here</p>
+						<p className={styles.authorName}>Author name here</p>
 					</a>
 
-					<a
-						href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-						className={styles.card}
-					>
-						<h2>Deploy &rarr;</h2>
-						<p>
-							Instantly deploy your Next.js site to a public URL with Vercel.
-						</p>
+					<a href="https://nextjs.org/docs" className={styles.card}>
+						<span className={styles.cardImageContainer}>
+							<Image
+								className={styles.cardImage}
+								src="/logo.png"
+								alt="NerdAlert Logo, constisting of an icon of a laptop on a purple background with the text 'NerdAlert'"
+								layout="fill"
+								objectFit="contain"
+							/>
+						</span>
+						<h2>Blog title</h2>
+						<p>Small description of the blog will go here</p>
+						<p className={styles.authorName}>Author name here</p>
+					</a>
+
+					<a href="https://nextjs.org/docs" className={styles.card}>
+						<span className={styles.cardImageContainer}>
+							<Image
+								className={styles.cardImage}
+								src="/logo.png"
+								alt="NerdAlert Logo, constisting of an icon of a laptop on a purple background with the text 'NerdAlert'"
+								layout="fill"
+								objectFit="contain"
+							/>
+						</span>
+						<h2>Blog title</h2>
+						<p>Small description of the blog will go here</p>
+						<p className={styles.authorName}>Author name here</p>
+					</a>
+
+					<a href="https://nextjs.org/docs" className={styles.card}>
+						<span className={styles.cardImageContainer}>
+							<Image
+								className={styles.cardImage}
+								src="/logo.png"
+								alt="NerdAlert Logo, constisting of an icon of a laptop on a purple background with the text 'NerdAlert'"
+								layout="fill"
+								objectFit="contain"
+							/>
+						</span>
+						<h2>Blog title</h2>
+						<p>Small description of the blog will go here</p>
+						<p className={styles.authorName}>Author name here</p>
 					</a>
 				</div>
 			</main>
