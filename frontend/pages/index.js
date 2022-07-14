@@ -14,34 +14,34 @@ export default function Home() {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
+			<header className={styles.header}>
+				<span className={styles.logoContainer}>
+					<Image
+						className={styles.logo}
+						src="/logo.png"
+						alt="NerdAlert Logo, constisting of an icon of a laptop on a purple background with the text 'NerdAlert'"
+						layout="fill"
+						objectFit="contain"
+					/>
+				</span>
+				<nav className={styles.mainNav}>
+					<ul>
+						<li>
+							<a href="#">Articles</a>
+						</li>
+						<li>
+							<a href="#">Videos</a>
+						</li>
+						<li>
+							<a href="#">Authors</a>
+						</li>
+						<li>
+							<a href="#">About Us</a>
+						</li>
+					</ul>
+				</nav>
+			</header>
 			<main className={styles.main}>
-				<header className={styles.header}>
-					<span className={styles.logoContainer}>
-						<Image
-							className={styles.logo}
-							src="/logo.png"
-							alt="NerdAlert Logo, constisting of an icon of a laptop on a purple background with the text 'NerdAlert'"
-							layout="fill"
-							objectFit="contain"
-						/>
-					</span>
-					<nav className={styles.mainNav}>
-						<ul>
-							<li>
-								<a href="#">Articles</a>
-							</li>
-							<li>
-								<a href="#">Videos</a>
-							</li>
-							<li>
-								<a href="#">Authors</a>
-							</li>
-							<li>
-								<a href="#">About Us</a>
-							</li>
-						</ul>
-					</nav>
-				</header>
 				<h1 className={styles.title}>Welcome to NerdAlert!</h1>
 
 				<div className={styles.grid}>
