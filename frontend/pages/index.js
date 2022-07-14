@@ -72,15 +72,7 @@ export default function Home() {
 			</main>
 
 			<footer className={styles.footer}>
-				Build, owned and run by{' '}
-				<span className={styles.logo}>
-					<Image
-						src="/logo.png"
-						alt="NerdAlert Logo, constisting of an icon of a laptop on a purple background with the text 'NerdAlert'"
-						width={72}
-						height={16}
-					/>
-				</span>
+				<p>Build, owned and run by NerdAlert</p>
 			</footer>
 		</>
 	);

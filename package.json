@@ -1,0 +1,16 @@
+{
+	"name": "nerd-alert-blog",
+	"description": "A blog site for NerdAlert",
+	"version": "1.0.0",
+	"main": "index.js",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Abibubble/nerd-alert-blog.git"
+	},
+	"author": "Abi Harrison",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/Abibubble/nerd-alert-blog/issues"
+	},
+	"homepage": "https://github.com/Abibubble/nerd-alert-blog#readme"
+}
