@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 
-export default function Home() {
+export default function Articles() {
 	return (
 		<>
 			<Head>
@@ -42,7 +42,7 @@ export default function Home() {
 				</nav>
 			</header>
 			<main className={styles.main}>
-				<h1 className={styles.title}>Welcome to NerdAlert!</h1>
+				<h1 className={styles.title}>NerdAlert Articles</h1>
 
 				<div className={styles.grid}>
 					<a href="https://nextjs.org/docs" className={styles.card}>
