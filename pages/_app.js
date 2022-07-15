@@ -8,9 +8,23 @@ function MyApp({ Component, pageProps }) {
 	return (
 		<>
 			<Head>
+				<meta charset="UTF-8" />
+				<meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+				<meta name="robots" content="index, follow" />
 				<meta
-					name="description"
-					content="A blog site for the articles and videos created by NerdAlert"
+					name="viewport"
+					content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+				/>
+				<meta property="og:image" name="image" content="docs/finalpage.png" />
+				<meta
+					property="og:image:alt"
+					content="An image of the final Holiday Hamper site on a range of devices"
+				/>
+				<meta name="twitter:card" content="summary" />
+				<meta name="twitter:image" content="docs/finalpage.png" />
+				<meta
+					name="twitter:image:alt"
+					content="An image of the final Holiday Hamper site on a range of devices"
 				/>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
