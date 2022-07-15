@@ -1,10 +1,23 @@
 import Head from 'next/head';
 import Image from 'next/image';
+import Link from 'next/link';
 import styles from '../styles/Home.module.css';
 import getAuthors from '../services/author-svc';
 
 export default function Authors() {
-	let authors = getAuthors();
+	let authors;
+
+	async function authorFetch() {
+		authors = await getAuthors();
+	}
+
+	console.log('Page authors = ' + authors);
+	let resolvedAuthors = Promise.resolve(authors);
+	console.log('resolvedAuthors = ' + resolvedAuthors);
+	let authorContent = 'hi';
+	// authors.map((author) => {
+	// 	authorContent += `<p>${author.attributes.name}</p>`;
+	// });
 
 	return (
 		<>
@@ -30,16 +43,16 @@ export default function Authors() {
 				<nav className={styles.mainNav}>
 					<ul>
 						<li>
-							<a href="/articles">Articles</a>
+							<Link href="/articles">Articles</Link>
 						</li>
 						<li>
-							<a href="/videos">Videos</a>
+							<Link href="/videos">Videos</Link>
 						</li>
 						<li>
-							<a href="/authors">Authors</a>
+							<Link href="/authors">Authors</Link>
 						</li>
 						<li>
-							<a href="/about">About Us</a>
+							<Link href="/about">About Us</Link>
 						</li>
 					</ul>
 				</nav>
@@ -48,9 +61,7 @@ export default function Authors() {
 				<h1 className={styles.title}>NerdAlert Authors</h1>
 
 				<p>Authors starts here</p>
-				{Object.entries(authors).map(([key, author]) => (
-					<p key={key}>{author.attributes.Name}</p>
-				))}
+				{authorContent}
 				<p>Authors ends here</p>
 
 				<div className={styles.grid}>

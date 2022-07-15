@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Image from 'next/image';
+import Link from 'next/link';
 import styles from '../styles/Home.module.css';
 
 export default function About() {
@@ -27,16 +28,16 @@ export default function About() {
 				<nav className={styles.mainNav}>
 					<ul>
 						<li>
-							<a href="/articles">Articles</a>
+							<Link href="/articles">Articles</Link>
 						</li>
 						<li>
-							<a href="/videos">Videos</a>
+							<Link href="/videos">Videos</Link>
 						</li>
 						<li>
-							<a href="/authors">Authors</a>
+							<Link href="/authors">Authors</Link>
 						</li>
 						<li>
-							<a href="/about">About Us</a>
+							<Link href="/about">About Us</Link>
 						</li>
 					</ul>
 				</nav>

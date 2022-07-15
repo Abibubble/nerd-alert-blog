@@ -1,8 +1,9 @@
 import Head from 'next/head';
 import Image from 'next/image';
+import Link from 'next/link';
 import styles from '../styles/Home.module.css';
 
-export default function Articles() {
+export default function Home() {
 	return (
 		<>
 			<Head>
@@ -27,22 +28,22 @@ export default function Articles() {
 				<nav className={styles.mainNav}>
 					<ul>
 						<li>
-							<a href="/articles">Articles</a>
+							<Link href="/articles">Articles</Link>
 						</li>
 						<li>
-							<a href="/videos">Videos</a>
+							<Link href="/videos">Videos</Link>
 						</li>
 						<li>
-							<a href="/authors">Authors</a>
+							<Link href="/authors">Authors</Link>
 						</li>
 						<li>
-							<a href="/about">About Us</a>
+							<Link href="/about">About Us</Link>
 						</li>
 					</ul>
 				</nav>
 			</header>
 			<main className={styles.main}>
-				<h1 className={styles.title}>NerdAlert Articles</h1>
+				<h1 className={styles.title}>Welcome to NerdAlert!</h1>
 
 				<div className={styles.grid}>
 					<a href="https://nextjs.org/docs" className={styles.card}>
