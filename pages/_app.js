@@ -31,13 +31,15 @@ function MyApp({ Component, pageProps }) {
 
 			<header className={styles.header}>
 				<span className={styles.logoContainer}>
-					<Image
-						className={styles.logo}
-						src="/logo.png"
-						alt="NerdAlert Logo, constisting of an icon of a laptop on a purple background with the text 'NerdAlert'"
-						layout="fill"
-						objectFit="contain"
-					/>
+					<Link href="/">
+						<Image
+							className={styles.logo}
+							src="/logo.png"
+							alt="NerdAlert Logo, constisting of an icon of a laptop on a purple background with the text 'NerdAlert'"
+							layout="fill"
+							objectFit="contain"
+						/>
+					</Link>
 				</span>
 				<nav className={styles.mainNav}>
 					<ul>
