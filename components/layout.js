@@ -21,7 +21,7 @@ export default function Layout({
 					name="keywords"
 					content={`'nerdalert, nerd, nerds, alert, blog, blogs, video, videos, author, authors, developer, developers, '${additionalKeywords}`}
 				/>
-				<meta charset="UTF-8" />
+				<meta charSet="UTF-8" />
 				<meta httpEquiv="X-UA-Compatible" content="IE=edge" />
 				<link rel="canonical" href={canonicalRef} />
 				<meta name="robots" content="index, follow" />
