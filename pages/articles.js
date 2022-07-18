@@ -3,7 +3,7 @@ import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 import contentSvc from '../services/content-svc';
 
-export default function Articles({ allArticles }) {
+export default function AllArticles({ allArticles }) {
 	return (
 		<>
 			<Head>
@@ -76,7 +76,7 @@ export default function Articles({ allArticles }) {
 }
 
 // Collect all articles from the content service, and pass them in as a page prop before the page loads
-Articles.getInitialProps = async (ctx) => {
+AllArticles.getInitialProps = async (ctx) => {
 	const allArticles = await contentSvc('articles?populate=*');
 	return { allArticles };
 };

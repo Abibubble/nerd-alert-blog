@@ -3,7 +3,7 @@ import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import contentSvc from '../services/content-svc';
 
-export default function Videos({ allVideos }) {
+export default function AllVideos({ allVideos }) {
 	return (
 		<>
 			<Head>
@@ -67,7 +67,7 @@ export default function Videos({ allVideos }) {
 }
 
 // Collect all videos from the content service, and pass them in as a page prop before the page loads
-Videos.getInitialProps = async (ctx) => {
+AllVideos.getInitialProps = async (ctx) => {
 	const allVideos = await contentSvc('videos?populate=*');
 	return { allVideos };
 };

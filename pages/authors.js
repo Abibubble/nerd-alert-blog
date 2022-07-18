@@ -3,7 +3,7 @@ import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 import contentSvc from '../services/content-svc';
 
-export default function Authors({ allAuthors }) {
+export default function AllAuthors({ allAuthors }) {
 	return (
 		<>
 			<Head>
@@ -73,7 +73,7 @@ export default function Authors({ allAuthors }) {
 }
 
 // Collect all authors from the content service, and pass them in as a page prop before the page loads
-Authors.getInitialProps = async (ctx) => {
+AllAuthors.getInitialProps = async (ctx) => {
 	const allAuthors = await contentSvc('authors');
 	return { allAuthors };
 };

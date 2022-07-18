@@ -37,6 +37,7 @@ function MyApp({ Component, pageProps }) {
 						alt="NerdAlert Logo, constisting of an icon of a laptop on a purple background with the text 'NerdAlert'"
 						layout="fill"
 						objectFit="contain"
+						priority={true}
 					/>
 				</span>
 				<nav className={styles.mainNav}>

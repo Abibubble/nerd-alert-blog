@@ -1,8 +1,8 @@
 import React from 'react';
 import Head from 'next/head';
-import styles from '../styles/About.module.css';
+import styles from '../../styles/About.module.css';
 
-export default function Video() {
+export default function SingleArticle() {
 	return (
 		<>
 			<Head>
@@ -37,10 +37,10 @@ export default function Video() {
 					name="twitter:image:alt"
 					content="An image of the final NerdAlert Blog site on a range of devices"
 				/>
-				<title>NerdAlert - video.title</title>
+				<title>NerdAlert - article.title</title>
 			</Head>
 			<div className={styles.container}>
-				<h2 className={styles.title}>Video Page</h2>
+				<h2 className={styles.title}>Article Page</h2>
 				<p className={styles.description}>
 					Lorem Ipsum is simply dummy text of the printing and typesetting
 					industry. Lorem Ipsum has been the industry standard dummy text ever

@@ -43,64 +43,9 @@ export default function About() {
 
 			<main className={styles.main}>
 				<h1 className={styles.title}>About NerdAlert</h1>
+				<p>Info about us and how we met, etc.</p>
 
 				<div className={styles.grid}>
-					<a href="https://nextjs.org/docs" className={styles.card}>
-						<span className={styles.cardImageContainer}>
-							<Image
-								className={styles.cardImage}
-								src="/logo.png"
-								alt="NerdAlert Logo, constisting of an icon of a laptop on a purple background with the text 'NerdAlert'"
-								layout="fill"
-								objectFit="contain"
-							/>
-						</span>
-						<h2>Author name</h2>
-						<p>Tagline description of the author will go here</p>
-					</a>
-
-					<a href="https://nextjs.org/docs" className={styles.card}>
-						<span className={styles.cardImageContainer}>
-							<Image
-								className={styles.cardImage}
-								src="/logo.png"
-								alt="NerdAlert Logo, constisting of an icon of a laptop on a purple background with the text 'NerdAlert'"
-								layout="fill"
-								objectFit="contain"
-							/>
-						</span>
-						<h2>Author name</h2>
-						<p>Tagline description of the author will go here</p>
-					</a>
-
-					<a href="https://nextjs.org/docs" className={styles.card}>
-						<span className={styles.cardImageContainer}>
-							<Image
-								className={styles.cardImage}
-								src="/logo.png"
-								alt="NerdAlert Logo, constisting of an icon of a laptop on a purple background with the text 'NerdAlert'"
-								layout="fill"
-								objectFit="contain"
-							/>
-						</span>
-						<h2>Author name</h2>
-						<p>Tagline description of the author will go here</p>
-					</a>
-
-					<a href="https://nextjs.org/docs" className={styles.card}>
-						<span className={styles.cardImageContainer}>
-							<Image
-								className={styles.cardImage}
-								src="/logo.png"
-								alt="NerdAlert Logo, constisting of an icon of a laptop on a purple background with the text 'NerdAlert'"
-								layout="fill"
-								objectFit="contain"
-							/>
-						</span>
-						<h2>Author name</h2>
-						<p>Tagline description of the author will go here</p>
-					</a>
-
 					<a href="https://nextjs.org/docs" className={styles.card}>
 						<span className={styles.cardImageContainer}>
 							<Image

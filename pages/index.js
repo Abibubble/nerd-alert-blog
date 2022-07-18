@@ -1,9 +1,9 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import Link from 'next/link';
 import styles from '../styles/Home.module.css';
+import contentSvc from '../services/content-svc';
 
-export default function Home() {
+export default function Home({ allArticles }) {
 	return (
 		<>
 			<Head>
@@ -45,82 +45,42 @@ export default function Home() {
 				<h1 className={styles.title}>Welcome to NerdAlert!</h1>
 
 				<div className={styles.grid}>
-					<a href="https://nextjs.org/docs" className={styles.card}>
-						<span className={styles.cardImageContainer}>
-							<Image
-								className={styles.cardImage}
-								src="/logo.png"
-								alt="NerdAlert Logo, constisting of an icon of a laptop on a purple background with the text 'NerdAlert'"
-								layout="fill"
-								objectFit="contain"
-							/>
-						</span>
-						<h2>Blog title</h2>
-						<p>Small description of the blog will go here</p>
-						<p className={styles.authorName}>Author name here</p>
-					</a>
-
-					<a href="https://nextjs.org/docs" className={styles.card}>
-						<span className={styles.cardImageContainer}>
-							<Image
-								className={styles.cardImage}
-								src="/logo.png"
-								alt="NerdAlert Logo, constisting of an icon of a laptop on a purple background with the text 'NerdAlert'"
-								layout="fill"
-								objectFit="contain"
-							/>
-						</span>
-						<h2>Blog title</h2>
-						<p>Small description of the blog will go here</p>
-						<p className={styles.authorName}>Author name here</p>
-					</a>
-
-					<a href="https://nextjs.org/docs" className={styles.card}>
-						<span className={styles.cardImageContainer}>
-							<Image
-								className={styles.cardImage}
-								src="/logo.png"
-								alt="NerdAlert Logo, constisting of an icon of a laptop on a purple background with the text 'NerdAlert'"
-								layout="fill"
-								objectFit="contain"
-							/>
-						</span>
-						<h2>Blog title</h2>
-						<p>Small description of the blog will go here</p>
-						<p className={styles.authorName}>Author name here</p>
-					</a>
-
-					<a href="https://nextjs.org/docs" className={styles.card}>
-						<span className={styles.cardImageContainer}>
-							<Image
-								className={styles.cardImage}
-								src="/logo.png"
-								alt="NerdAlert Logo, constisting of an icon of a laptop on a purple background with the text 'NerdAlert'"
-								layout="fill"
-								objectFit="contain"
-							/>
-						</span>
-						<h2>Blog title</h2>
-						<p>Small description of the blog will go here</p>
-						<p className={styles.authorName}>Author name here</p>
-					</a>
-
-					<a href="https://nextjs.org/docs" className={styles.card}>
-						<span className={styles.cardImageContainer}>
-							<Image
-								className={styles.cardImage}
-								src="/logo.png"
-								alt="NerdAlert Logo, constisting of an icon of a laptop on a purple background with the text 'NerdAlert'"
-								layout="fill"
-								objectFit="contain"
-							/>
-						</span>
-						<h2>Blog title</h2>
-						<p>Small description of the blog will go here</p>
-						<p className={styles.authorName}>Author name here</p>
-					</a>
+					{allArticles.map((article) => {
+						return (
+							<a
+								href="https://nextjs.org/docs"
+								key={article.id}
+								className={styles.card}
+							>
+								<span className={styles.cardImageContainer}>
+									<Image
+										className={styles.cardImage}
+										src={
+											article.attributes.image.data.attributes.formats.small.url
+										}
+										alt={
+											article.attributes.image.data.attributes.alternativeText
+										}
+										layout="fill"
+										objectFit="contain"
+									/>
+								</span>
+								<h2>{article.attributes.title}</h2>
+								<p>{article.attributes.tagline}</p>
+								<p className={styles.authorName}>
+									{article.attributes.author.data.attributes.name}
+								</p>
+							</a>
+						);
+					})}
 				</div>
 			</main>
 		</>
 	);
 }
+
+// Collect all articles from the content service, and pass them in as a page prop before the page loads
+Home.getInitialProps = async (ctx) => {
+	const allArticles = await contentSvc('articles?populate=*');
+	return { allArticles };
+};

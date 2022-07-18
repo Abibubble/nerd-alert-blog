@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import styles from '../styles/About.module.css';
 
-export default function Article() {
+export default function SingleAuthor() {
 	return (
 		<>
 			<Head>
@@ -37,10 +37,10 @@ export default function Article() {
 					name="twitter:image:alt"
 					content="An image of the final NerdAlert Blog site on a range of devices"
 				/>
-				<title>NerdAlert - article.title</title>
+				<title>NerdAlert - author.name</title>
 			</Head>
 			<div className={styles.container}>
-				<h2 className={styles.title}>Article Page</h2>
+				<h2 className={styles.title}>Author Page</h2>
 				<p className={styles.description}>
 					Lorem Ipsum is simply dummy text of the printing and typesetting
 					industry. Lorem Ipsum has been the industry standard dummy text ever
