@@ -1,7 +1,7 @@
 import Image from 'next/image';
-import Layout from '../components/layout';
-import styles from '../styles/Home.module.css';
-import contentSvc from '../services/content-svc';
+import Layout from '@/components/layout';
+import styles from '@/styles/Home.module.css';
+import contentSvc from '@/services/content-svc';
 
 export default function Home({ allArticles }) {
 	return (

@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
-import Layout from '../components/layout';
-import styles from '../../styles/About.module.css';
+import Layout from '@/components/layout';
+import styles from '@/styles/About.module.css';
 
 export default function SingleArticle() {
 	const router = useRouter();
