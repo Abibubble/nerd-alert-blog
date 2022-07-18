@@ -16,7 +16,7 @@ export default function AllArticles({ allArticles }) {
 					{allArticles.map((article) => {
 						return (
 							<a
-								href="https://nextjs.org/docs"
+								href={`/articles/${article.id}`}
 								key={article.id}
 								className={styles.card}
 							>

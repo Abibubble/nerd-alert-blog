@@ -14,7 +14,7 @@ export default function AllVideos({ allVideos }) {
 				{allVideos.map((video) => {
 					return (
 						<a
-							href="https://nextjs.org/docs"
+							href={`/videos/${video.id}`}
 							key={video.id}
 							className={styles.card}
 						>

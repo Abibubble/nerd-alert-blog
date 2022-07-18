@@ -1,29 +1,42 @@
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 import Layout from '@/components/layout';
 import styles from '@/styles/About.module.css';
+import authorStyles from '@/styles/Author.module.css';
+import contentSvc from '@/services/content-svc';
+import { API_URL } from '@/config/index';
 
-export default function SingleAuthor() {
+let id;
+
+export default function SingleAuthor(author) {
 	const router = useRouter();
-	const { id } = router.query.id;
+	id = router.query.id;
 
 	return (
 		<>
 			<Layout>
 				<div className={styles.container}>
-					<h2 className={styles.title}>Article Page</h2>
-					<p className={styles.description}>
-						Lorem Ipsum is simply dummy text of the printing and typesetting
-						industry. Lorem Ipsum has been the industry standard dummy text ever
-						since the 1500s, when an unknown printer took a galley of type and
-						scrambled it to make a type specimen book. It has survived not only
-						five centuries, but also the leap into electronic typesetting,
-						remaining essentially unchanged. It was popularised in the 1960s
-						with the release of Letraset sheets containing Lorem Ipsum passages,
-						and more recently with desktop publishing software like Aldus
-						PageMaker including versions of Lorem Ipsum.
-					</p>
+					<h2 className={styles.title}>{author.name}</h2>
+					<p className={authorStyles.tagline}>{author.tagline}</p>
+					<hr className={authorStyles.hr} />
+					<p className={styles.description}>{author.aboutYou}</p>
+					<div className={authorStyles.avatarContainer}>
+						<Image
+							src={`${API_URL}${author.avatar.data.attributes.formats.small.url}`}
+							alt={author.avatar.data.attributes.alternativeText}
+							layout="fill"
+							priority={true}
+						/>
+					</div>
 				</div>
 			</Layout>
 		</>
 	);
 }
+
+// Collect a single author from the content service, and pass it in as a page prop before the page loads
+SingleAuthor.getInitialProps = async (ctx) => {
+	let author = await contentSvc(`authors?id=${id}&populate=*`);
+	author = await author[0].attributes;
+	return author;
+};

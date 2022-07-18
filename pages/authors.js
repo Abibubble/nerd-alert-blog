@@ -16,7 +16,7 @@ export default function AllAuthors({ allAuthors }) {
 					{allAuthors.map((author) => {
 						return (
 							<a
-								href="https://nextjs.org/docs"
+								href={`/authors/${author.id}`}
 								key={author.id}
 								className={styles.card}
 							>
