@@ -1,7 +1,7 @@
 import Head from 'next/head';
-import Link from 'next/link';
-import Image from 'next/image';
-import styles from '../styles/Home.module.css';
+import styles from '../styles/Layout.module.css';
+import Header from './header';
+import Footer from './footer';
 
 export default function Layout({
 	additionalTitle,
@@ -55,40 +55,13 @@ export default function Layout({
 				<title>NerdAlert Blog{additionalTitle}</title>
 			</Head>
 
-			<header className={styles.header}>
-				<span className={styles.logoContainer}>
-					<Image
-						className={styles.logo}
-						src="/logo.png"
-						alt="NerdAlert Logo, constisting of an icon of a laptop on a purple background with the text 'NerdAlert'"
-						layout="fill"
-						objectFit="contain"
-						priority={true}
-					/>
-				</span>
-				<nav className={styles.mainNav}>
-					<ul>
-						<li>
-							<Link href="/articles">Articles</Link>
-						</li>
-						<li>
-							<Link href="/videos">Videos</Link>
-						</li>
-						<li>
-							<Link href="/authors">Authors</Link>
-						</li>
-						<li>
-							<Link href="/about">About Us</Link>
-						</li>
-					</ul>
-				</nav>
-			</header>
+			<Header />
 
-			{children}
+			<main className={styles.main}>
+				<div className={styles.content}>{children}</div>
+			</main>
 
-			<footer className={styles.footer}>
-				<p>Built, owned and run by NerdAlert</p>
-			</footer>
+			<Footer />
 		</>
 	);
 }

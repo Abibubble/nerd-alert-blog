@@ -1,7 +1,7 @@
 import Image from 'next/image';
+import Layout from '../components/layout';
 import styles from '../styles/Home.module.css';
 import contentSvc from '../services/content-svc';
-import Layout from '../components/layout';
 
 export default function AllArticles({ allArticles }) {
 	return (
@@ -10,36 +10,34 @@ export default function AllArticles({ allArticles }) {
 				additionalTitle=" | All Articles"
 				description="A list of all the articles available on the NerdAlert site."
 			>
-				<main className={styles.main}>
-					<h1 className={styles.title}>NerdAlert Articles</h1>
+				<h1 className={styles.title}>NerdAlert Articles</h1>
 
-					<div className={styles.grid}>
-						{allArticles.map((article) => {
-							return (
-								<a
-									href="https://nextjs.org/docs"
-									key={article.id}
-									className={styles.card}
-								>
-									<span className={styles.cardImageContainer}>
-										<Image
-											className={styles.cardImage}
-											src="/logo.png"
-											alt="NerdAlert Logo, constisting of an icon of a laptop on a purple background with the text 'NerdAlert'"
-											layout="fill"
-											objectFit="contain"
-										/>
-									</span>
-									<h2>{article.attributes.title}</h2>
-									<p>{article.attributes.tagline}</p>
-									<p className={styles.authorName}>
-										{article.attributes.author.data.attributes.name}
-									</p>
-								</a>
-							);
-						})}
-					</div>
-				</main>
+				<div className={styles.grid}>
+					{allArticles.map((article) => {
+						return (
+							<a
+								href="https://nextjs.org/docs"
+								key={article.id}
+								className={styles.card}
+							>
+								<span className={styles.cardImageContainer}>
+									<Image
+										className={styles.cardImage}
+										src="/logo.png"
+										alt="NerdAlert Logo, constisting of an icon of a laptop on a purple background with the text 'NerdAlert'"
+										layout="fill"
+										objectFit="contain"
+									/>
+								</span>
+								<h2>{article.attributes.title}</h2>
+								<p>{article.attributes.tagline}</p>
+								<p className={styles.authorName}>
+									{article.attributes.author.data.attributes.name}
+								</p>
+							</a>
+						);
+					})}
+				</div>
 			</Layout>
 		</>
 	);

@@ -1,6 +1,6 @@
+import Layout from '../components/layout';
 import styles from '../styles/Home.module.css';
 import contentSvc from '../services/content-svc';
-import Layout from '../components/layout';
 
 export default function AllVideos({ allVideos }) {
 	return (
@@ -8,27 +8,25 @@ export default function AllVideos({ allVideos }) {
 			additionalTitle=" | All Videos"
 			description="A list of all videos available on the NerdAlert site."
 		>
-			<main className={styles.main}>
-				<h1 className={styles.title}>NerdAlert Videos</h1>
+			<h1 className={styles.title}>NerdAlert Videos</h1>
 
-				<div className={styles.grid}>
-					{allVideos.map((video) => {
-						return (
-							<a
-								href="https://nextjs.org/docs"
-								key={video.id}
-								className={styles.card}
-							>
-								<span className={styles.cardImageContainer}></span>
-								<h2>{video.attributes.title}</h2>
-								<p className={styles.authorName}>
-									{video.attributes.author.data.attributes.name}
-								</p>
-							</a>
-						);
-					})}
-				</div>
-			</main>
+			<div className={styles.grid}>
+				{allVideos.map((video) => {
+					return (
+						<a
+							href="https://nextjs.org/docs"
+							key={video.id}
+							className={styles.card}
+						>
+							<span className={styles.cardImageContainer}></span>
+							<h2>{video.attributes.title}</h2>
+							<p className={styles.authorName}>
+								{video.attributes.author.data.attributes.name}
+							</p>
+						</a>
+					);
+				})}
+			</div>
 		</Layout>
 	);
 }
