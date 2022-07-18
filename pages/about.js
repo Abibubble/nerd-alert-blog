@@ -5,7 +5,7 @@ import styles from '@/styles/Home.module.css';
 export default function About() {
 	return (
 		<Layout
-			additionalTitle=" | About Us"
+			title="NerdAlert Blog | About Us"
 			description="A page to find out information about the members of NerdAlert."
 			additionalKeywords="about"
 		>

@@ -6,7 +6,7 @@ import styles from '@/styles/404.module.css';
 export default function NotFound() {
 	return (
 		<Layout
-			additionalTitle=" | Error 404"
+			title="NerdAlert Blog | Error 404"
 			description="404 page for the NerdAlert Blog. This page is not found."
 			additionalKeywords="404, error, not, found"
 		>

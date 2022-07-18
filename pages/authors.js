@@ -7,7 +7,7 @@ export default function AllAuthors({ allAuthors }) {
 	return (
 		<>
 			<Layout
-				additionalTitle=" | All Authors"
+				title="NerdAlert Blog | All Authors"
 				description="A list of all the authors that have contributed to the NerdAlert site."
 			>
 				<h1 className={styles.title}>NerdAlert Authors</h1>

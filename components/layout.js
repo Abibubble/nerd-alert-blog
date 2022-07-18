@@ -4,7 +4,7 @@ import Header from './header';
 import Footer from './footer';
 
 export default function Layout({
-	additionalTitle,
+	title,
 	additionalKeywords,
 	description,
 	imageUrl,
@@ -31,11 +31,7 @@ export default function Layout({
 				/>
 
 				<meta property="og:type" content={pageType} />
-				<meta
-					property="og:title"
-					name="title"
-					content={`NerdAlert Blog${additionalTitle}`}
-				/>
+				<meta property="og:title" name="title" content={title} />
 				<meta property="og:site_name" content="NerdAlert Blog" />
 				<meta property="og:description" content={description} />
 				<meta property="og:url" content={canonicalRef} />
@@ -45,14 +41,11 @@ export default function Layout({
 				<meta name="twitter:card" content="summary" />
 				<meta name="twitter:image" content={imageUrl} />
 				<meta name="twitter:image:alt" content={imageAlt} />
-				<meta
-					name="twitter:title"
-					content={`NerdAlert Blog${additionalTitle}`}
-				/>
+				<meta name="twitter:title" content={title} />
 				<meta name="twitter:description" content={description} />
 
 				<link rel="icon" href="/favicon.ico" />
-				<title>NerdAlert Blog{additionalTitle}</title>
+				<title>{title}</title>
 			</Head>
 
 			<Header />
@@ -67,7 +60,7 @@ export default function Layout({
 }
 
 Layout.defaultProps = {
-	additionalTitle: '',
+	title: 'NerdAlert Blog',
 	additionalKeywords: '',
 	description:
 		'NerdAlert Blog, a blog site for articles and videos created by members of NerdAlert.',

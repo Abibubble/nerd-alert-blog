@@ -5,7 +5,7 @@ import contentSvc from '@/services/content-svc';
 export default function AllVideos({ allVideos }) {
 	return (
 		<Layout
-			additionalTitle=" | All Videos"
+			title="NerdAlert Blog | All Videos"
 			description="A list of all videos available on the NerdAlert site."
 		>
 			<h1 className={styles.title}>NerdAlert Videos</h1>

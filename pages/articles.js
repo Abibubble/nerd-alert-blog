@@ -7,7 +7,7 @@ export default function AllArticles({ allArticles }) {
 	return (
 		<>
 			<Layout
-				additionalTitle=" | All Articles"
+				title="NerdAlert Blog | All Articles"
 				description="A list of all the articles available on the NerdAlert site."
 			>
 				<h1 className={styles.title}>NerdAlert Articles</h1>
