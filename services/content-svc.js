@@ -1,11 +1,10 @@
 import axios from 'axios';
-
-const cms = 'http://localhost:1337';
+import { API_URL } from '@/config/index';
 
 const contentSvc = async (model) => {
 	console.log(`Starting contentSvc for ${model}`);
 
-	const url = `${cms}/api/${model}`;
+	const url = `${API_URL}/api/${model}`;
 	try {
 		const cmsResponse = await axios
 			.get(url)
