@@ -14,8 +14,8 @@ export default function SingleArticle(article) {
 			<Layout>
 				<div className={styles.container}>
 					<h2 className={styles.title}>{article.title}</h2>
-					<p className={styles.description}>{article.content}</p>
 					<p>{article.author.data.attributes.name}</p>
+					<p className={styles.description}>{article.content}</p>
 				</div>
 			</Layout>
 		</>

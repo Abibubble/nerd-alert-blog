@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import Layout from '@/components/layout';
 import styles from '@/styles/About.module.css';
 import contentSvc from '@/services/content-svc';
+import { API_URL } from '@/config/index';
 
 let id;
 
@@ -15,7 +16,7 @@ export default function SingleVideo(video) {
 				<div className={styles.container}>
 					<h2 className={styles.title}>{video.title}</h2>
 					<video width="500px" controls>
-						<source src={video.video.data[0].attributes.url} />
+						<source src={`${API_URL}${video.video.data[0].attributes.url}`} />
 						Your browser does not support the video tag
 					</video>
 				</div>
