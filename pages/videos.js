@@ -1,5 +1,6 @@
 import Layout from '@/components/layout';
-import styles from '@/styles/Home.module.css';
+import styles from '@/styles/Common.module.css';
+import card from '@/styles/Card.module.css';
 import contentSvc from '@/services/content-svc';
 
 export default function AllVideos({ allVideos }) {
@@ -10,17 +11,17 @@ export default function AllVideos({ allVideos }) {
 		>
 			<h1 className={styles.title}>NerdAlert Videos</h1>
 
-			<div className={styles.grid}>
+			<div className={card.grid}>
 				{allVideos.map((video) => {
 					return (
 						<a
 							href={`/videos/${video.id}`}
 							key={video.id}
-							className={styles.card}
+							className={card.card}
 						>
-							<span className={styles.cardImageContainer}></span>
+							<span className={card.cardImageContainer}></span>
 							<h2>{video.attributes.title}</h2>
-							<p className={styles.authorName}>
+							<p className={card.authorName}>
 								{video.attributes.author.data.attributes.name}
 							</p>
 						</a>

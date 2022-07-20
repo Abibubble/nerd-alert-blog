@@ -1,0 +1,39 @@
+.container {
+	text-align: center;
+	padding: 1rem 7rem;
+}
+
+.title {
+	font-size: 2rem;
+}
+
+.description {
+	font-size: 1rem;
+	line-height: 2rem;
+}
+
+.avatarContainer {
+	width: 500px;
+	height: 500px;
+	margin: 0 auto;
+	position: relative;
+}
+
+.tagline {
+	font-style: italic;
+}
+
+.hr {
+	margin: 24px 0;
+}
+
+.cardImageContainer {
+	height: 240px;
+	width: 240px;
+	position: relative;
+}
+
+.cardImage {
+	max-height: 100%;
+	max-width: 100%;
+}

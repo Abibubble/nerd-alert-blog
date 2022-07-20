@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import Layout from '@/components/layout';
-import styles from '@/styles/About.module.css';
+import styles from '@/styles/SinglePages.module.css';
 import contentSvc from '@/services/content-svc';
 import { API_URL } from '@/config/index';
 

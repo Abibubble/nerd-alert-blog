@@ -1,7 +1,9 @@
 import Image from 'next/image';
 import Layout from '@/components/layout';
-import styles from '@/styles/Home.module.css';
+import styles from '@/styles/Common.module.css';
+import card from '@/styles/Card.module.css';
 import contentSvc from '@/services/content-svc';
+import { API_URL } from '@/config/index';
 
 export default function AllArticles({ allArticles }) {
 	return (
@@ -12,26 +14,26 @@ export default function AllArticles({ allArticles }) {
 			>
 				<h1 className={styles.title}>NerdAlert Articles</h1>
 
-				<div className={styles.grid}>
+				<div className={card.grid}>
 					{allArticles.map((article) => {
 						return (
 							<a
 								href={`/articles/${article.id}`}
 								key={article.id}
-								className={styles.card}
+								className={card.card}
 							>
-								<span className={styles.cardImageContainer}>
+								<div className={card.cardImageContainer}>
 									<Image
-										className={styles.cardImage}
-										src="/logo.png"
+										className={card.cardImage}
+										src={`${API_URL}${article.attributes.image.data.attributes.formats.small.url}`}
 										alt="NerdAlert Logo, constisting of an icon of a laptop on a purple background with the text 'NerdAlert'"
 										layout="fill"
 										objectFit="contain"
 									/>
-								</span>
+								</div>
 								<h2>{article.attributes.title}</h2>
 								<p>{article.attributes.tagline}</p>
-								<p className={styles.authorName}>
+								<p className={card.authorName}>
 									{article.attributes.author.data.attributes.name}
 								</p>
 							</a>

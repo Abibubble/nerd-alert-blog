@@ -1,8 +1,7 @@
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import Layout from '@/components/layout';
-import styles from '@/styles/About.module.css';
-import authorStyles from '@/styles/Author.module.css';
+import styles from '@/styles/SinglePages.module.css';
 import contentSvc from '@/services/content-svc';
 import { API_URL } from '@/config/index';
 
@@ -17,10 +16,10 @@ export default function SingleAuthor(author) {
 			<Layout>
 				<div className={styles.container}>
 					<h2 className={styles.title}>{author.name}</h2>
-					<p className={authorStyles.tagline}>{author.tagline}</p>
-					<hr className={authorStyles.hr} />
+					<p className={styles.tagline}>{author.tagline}</p>
+					<hr className={styles.hr} />
 					<p className={styles.description}>{author.aboutYou}</p>
-					<div className={authorStyles.avatarContainer}>
+					<div className={styles.avatarContainer}>
 						<Image
 							src={`${API_URL}${author.avatar.data.attributes.formats.small.url}`}
 							alt={author.avatar.data.attributes.alternativeText}

@@ -1,7 +1,9 @@
 import Image from 'next/image';
 import Layout from '@/components/layout';
-import styles from '@/styles/Home.module.css';
+import styles from '@/styles/Common.module.css';
+import card from '@/styles/Card.module.css';
 import contentSvc from '@/services/content-svc';
+import { API_URL } from '@/config/index';
 
 export default function AllAuthors({ allAuthors }) {
 	return (
@@ -12,23 +14,23 @@ export default function AllAuthors({ allAuthors }) {
 			>
 				<h1 className={styles.title}>NerdAlert Authors</h1>
 
-				<div className={styles.grid}>
+				<div className={card.grid}>
 					{allAuthors.map((author) => {
 						return (
 							<a
 								href={`/authors/${author.id}`}
 								key={author.id}
-								className={styles.card}
+								className={card.card}
 							>
-								<span className={styles.cardImageContainer}>
+								<div className={card.cardImageContainer}>
 									<Image
-										className={styles.cardImage}
-										src="/logo.png"
+										className={card.cardImage}
+										src={`${API_URL}${author.attributes.avatar.data.attributes.formats.small.url}`}
 										alt="NerdAlert Logo, constisting of an icon of a laptop on a purple background with the text 'NerdAlert'"
 										layout="fill"
 										objectFit="contain"
 									/>
-								</span>
+								</div>
 								<h2>{author.attributes.name}</h2>
 								<p>{author.attributes.tagline}</p>
 							</a>
@@ -42,6 +44,7 @@ export default function AllAuthors({ allAuthors }) {
 
 // Collect all authors from the content service, and pass them in as a page prop before the page loads
 AllAuthors.getInitialProps = async (ctx) => {
-	const allAuthors = await contentSvc('authors');
+	const allAuthors = await contentSvc('authors?populate=*');
+	console.log('allAuthors', allAuthors);
 	return { allAuthors };
 };

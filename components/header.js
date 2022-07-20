@@ -1,11 +1,10 @@
-import Link from 'next/link';
 import Image from 'next/image';
 import styles from '@/styles/Header.module.css';
 
 export default function Header() {
 	return (
 		<header className={styles.header}>
-			<Link href="/">
+			<a href="/">
 				<div className={styles.logoContainer}>
 					<Image
 						className={styles.logo}
@@ -16,21 +15,21 @@ export default function Header() {
 						priority={true}
 					/>
 				</div>
-			</Link>
+			</a>
 
 			<nav className={styles.mainNav}>
 				<ul>
 					<li>
-						<Link href="/articles">Articles</Link>
+						<a href="/articles">Articles</a>
 					</li>
 					<li>
-						<Link href="/videos">Videos</Link>
+						<a href="/videos">Videos</a>
 					</li>
 					<li>
-						<Link href="/authors">Authors</Link>
+						<a href="/authors">Authors</a>
 					</li>
 					<li>
-						<Link href="/about">About Us</Link>
+						<a href="/about">About Us</a>
 					</li>
 				</ul>
 			</nav>
