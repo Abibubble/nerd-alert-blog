@@ -9,6 +9,7 @@ let id;
 export default function SingleAuthor(author) {
 	const router = useRouter();
 	id = router.query.id;
+	author = author.author;
 
 	return (
 		<>
@@ -36,8 +37,9 @@ export default function SingleAuthor(author) {
 }
 
 // Collect a single author from the content service, and pass it in as a page prop before the page loads
-SingleAuthor.getInitialProps = async (ctx) => {
-	let author = await contentSvc(`authors?id=${id}&populate=*`);
-	author = await author[0].attributes;
-	return author;
-};
+export async function getServerSideProps(ctx) {
+	let { id } = ctx.query;
+	let author = await contentSvc(`authors?filters[id]=${id}&populate=*`);
+	author = author[0].attributes;
+	return { props: { author } };
+}

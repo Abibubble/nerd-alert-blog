@@ -22,13 +22,15 @@ export default function SingleCategory({ categoryName, articles }) {
 					<hr className={styles.hr} />
 					<div className={card.grid}>
 						{articles.map((article) => {
+							article = article.attributes;
+
 							return (
 								<a
 									href={`/articles/${article.id}`}
 									key={article.id}
 									className={card.card}
 								>
-									<p key={article.id}>{article.attributes.title}</p>
+									<p key={article.id}>{article.title}</p>
 								</a>
 							);
 						})}
@@ -40,11 +42,12 @@ export default function SingleCategory({ categoryName, articles }) {
 }
 
 // Collect a single category and all the articles from the content service, and pass it in as a page prop before the page loads
-SingleCategory.getInitialProps = async (ctx) => {
-	const category = await contentSvc(`categories?id=${id}&populate=*`);
+export async function getServerSideProps(ctx) {
+	let { id } = ctx.query;
+	let category = await contentSvc(`categories?filters[id]=${id}&populate=*`);
 	const categoryName = await category[0].attributes.name;
 	const articles = await contentSvc(
 		`articles?filters[categories][name]=${categoryName}&populate=*`
 	);
-	return { categoryName, articles };
-};
+	return { props: { categoryName, articles } };
+}

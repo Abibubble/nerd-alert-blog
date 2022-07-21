@@ -9,6 +9,7 @@ let id;
 export default function SingleArticle(article) {
 	const router = useRouter();
 	id = router.query.id;
+	article = article.article;
 
 	return (
 		<>
@@ -37,8 +38,9 @@ export default function SingleArticle(article) {
 }
 
 // Collect a single article from the content service, and pass it in as a page prop before the page loads
-SingleArticle.getInitialProps = async (ctx) => {
-	let article = await contentSvc(`articles?id=${id}&populate=*`);
-	article = await article[0].attributes;
-	return article;
-};
+export async function getServerSideProps(ctx) {
+	let { id } = ctx.query;
+	let article = await contentSvc(`articles?filters[id]=${id}&populate=*`);
+	article = article[0].attributes;
+	return { props: { article } };
+}
