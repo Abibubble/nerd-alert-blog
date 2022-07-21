@@ -10,7 +10,10 @@ export default function SingleVideo(video) {
 
 	return (
 		<>
-			<Layout>
+			<Layout
+				title={`NerdAlert Blog | ${video.title}`}
+				description={`${video.title}, a video on the NerdAlert site.`}
+			>
 				<div className={styles.container}>
 					<h2 className={styles.title}>{video.title}</h2>
 					<video width="500px" controls>

@@ -12,7 +12,10 @@ export default function SingleAuthor(author) {
 
 	return (
 		<>
-			<Layout>
+			<Layout
+				title={`NerdAlert Blog | ${author.name}`}
+				description={`Information about ${author.name}, an author on the NerdAlert site.`}
+			>
 				<div className={styles.container}>
 					<h2 className={styles.title}>{author.name}</h2>
 					<p className={styles.tagline}>{author.tagline}</p>

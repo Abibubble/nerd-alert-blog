@@ -12,7 +12,10 @@ export default function SingleArticle(article) {
 
 	return (
 		<>
-			<Layout>
+			<Layout
+				title={`NerdAlert Blog | ${article.title}`}
+				description={`${article.title}, an article on the NerdAlert site.`}
+			>
 				<div className={styles.container}>
 					<div className={styles.cardImageContainer}>
 						<Image
@@ -25,6 +28,7 @@ export default function SingleArticle(article) {
 					</div>
 					<h2 className={styles.title}>{article.title}</h2>
 					<p>{article.author.data.attributes.name}</p>
+					<p>{new Date(article.publishedAt).toLocaleDateString('en-gb')}</p>
 					<p className={styles.description}>{article.content}</p>
 				</div>
 			</Layout>
