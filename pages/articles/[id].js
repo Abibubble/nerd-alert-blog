@@ -3,7 +3,6 @@ import Image from 'next/image';
 import Layout from '@/components/layout';
 import styles from '@/styles/SinglePages.module.css';
 import contentSvc from '@/services/content-svc';
-import { API_URL } from '@/config/index';
 
 let id;
 
@@ -18,7 +17,7 @@ export default function SingleArticle(article) {
 					<div className={styles.cardImageContainer}>
 						<Image
 							className={styles.cardImage}
-							src={`${API_URL}${article.image.data.attributes.formats.small.url}`}
+							src={article.image.data.attributes.formats.small.url}
 							alt={article.image.data.attributes.alternativeText}
 							layout="fill"
 							objectFit="contain"
@@ -37,6 +36,5 @@ export default function SingleArticle(article) {
 SingleArticle.getInitialProps = async (ctx) => {
 	let article = await contentSvc(`articles?id=${id}&populate=*`);
 	article = await article[0].attributes;
-	console.log(article);
 	return article;
 };

@@ -6,6 +6,6 @@ const nextConfig = {
 module.exports = {
 	nextConfig,
 	images: {
-		domains: ['http://localhost:1337', 'localhost'],
+		domains: ['localhost', 'res.cloudinary.com'],
 	},
 };

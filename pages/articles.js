@@ -3,7 +3,6 @@ import Layout from '@/components/layout';
 import styles from '@/styles/Common.module.css';
 import card from '@/styles/Card.module.css';
 import contentSvc from '@/services/content-svc';
-import { API_URL } from '@/config/index';
 
 export default function AllArticles({ allArticles }) {
 	return (
@@ -25,7 +24,9 @@ export default function AllArticles({ allArticles }) {
 								<div className={card.cardImageContainer}>
 									<Image
 										className={card.cardImage}
-										src={`${API_URL}${article.attributes.image.data.attributes.formats.small.url}`}
+										src={
+											article.attributes.image.data.attributes.formats.small.url
+										}
 										alt="NerdAlert Logo, constisting of an icon of a laptop on a purple background with the text 'NerdAlert'"
 										layout="fill"
 										objectFit="contain"
@@ -47,6 +48,8 @@ export default function AllArticles({ allArticles }) {
 
 // Collect all articles from the content service, and pass them in as a page prop before the page loads
 AllArticles.getInitialProps = async (ctx) => {
-	const allArticles = await contentSvc('articles?populate=*');
+	const allArticles = await contentSvc(
+		'articles?sort=publishedAt:ASC&populate=*'
+	);
 	return { allArticles };
 };

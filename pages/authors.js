@@ -3,7 +3,6 @@ import Layout from '@/components/layout';
 import styles from '@/styles/Common.module.css';
 import card from '@/styles/Card.module.css';
 import contentSvc from '@/services/content-svc';
-import { API_URL } from '@/config/index';
 
 export default function AllAuthors({ allAuthors }) {
 	return (
@@ -25,7 +24,9 @@ export default function AllAuthors({ allAuthors }) {
 								<div className={card.cardImageContainer}>
 									<Image
 										className={card.cardImage}
-										src={`${API_URL}${author.attributes.avatar.data.attributes.formats.small.url}`}
+										src={
+											author.attributes.avatar.data.attributes.formats.small.url
+										}
 										alt="NerdAlert Logo, constisting of an icon of a laptop on a purple background with the text 'NerdAlert'"
 										layout="fill"
 										objectFit="contain"
@@ -44,7 +45,6 @@ export default function AllAuthors({ allAuthors }) {
 
 // Collect all authors from the content service, and pass them in as a page prop before the page loads
 AllAuthors.getInitialProps = async (ctx) => {
-	const allAuthors = await contentSvc('authors?populate=*');
-	console.log('allAuthors', allAuthors);
+	const allAuthors = await contentSvc('authors?sort=name:ASC&populate=*');
 	return { allAuthors };
 };

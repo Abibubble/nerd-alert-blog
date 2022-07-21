@@ -3,7 +3,6 @@ import Image from 'next/image';
 import Layout from '@/components/layout';
 import styles from '@/styles/SinglePages.module.css';
 import contentSvc from '@/services/content-svc';
-import { API_URL } from '@/config/index';
 
 let id;
 
@@ -21,7 +20,7 @@ export default function SingleAuthor(author) {
 					<p className={styles.description}>{author.aboutYou}</p>
 					<div className={styles.avatarContainer}>
 						<Image
-							src={`${API_URL}${author.avatar.data.attributes.formats.small.url}`}
+							src={author.avatar.data.attributes.formats.small.url}
 							alt={author.avatar.data.attributes.alternativeText}
 							layout="fill"
 							priority={true}

@@ -34,6 +34,6 @@ export default function AllVideos({ allVideos }) {
 
 // Collect all videos from the content service, and pass them in as a page prop before the page loads
 AllVideos.getInitialProps = async (ctx) => {
-	const allVideos = await contentSvc('videos?populate=*');
+	const allVideos = await contentSvc('videos?sort=publishedAt:ASC&populate=*');
 	return { allVideos };
 };
