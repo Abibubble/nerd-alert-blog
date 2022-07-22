@@ -17,6 +17,10 @@ export default function Header() {
 				</div>
 			</a>
 
+			<div className={styles.search}>
+				<input type="text" placeholder="Search" />
+			</div>
+
 			<nav className={styles.mainNav}>
 				<ul>
 					<li>
@@ -27,6 +31,9 @@ export default function Header() {
 					</li>
 					<li>
 						<a href="/authors">Authors</a>
+					</li>
+					<li>
+						<a href="/categories">Categories</a>
 					</li>
 					<li>
 						<a href="/about">About Us</a>

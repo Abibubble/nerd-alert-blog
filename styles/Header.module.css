@@ -6,7 +6,7 @@
 	width: 100%;
 	background-color: #6e41a4;
 	display: grid;
-	grid-template-areas: 'logo . nav';
+	grid-template-areas: 'logo search nav';
 	color: white;
 }
 
@@ -24,13 +24,28 @@
 	max-width: 100%;
 }
 
+.search {
+	grid-area: search;
+	margin: 0 auto;
+	height: 48px;
+	align-self: center;
+}
+
+.search input {
+	width: 450px;
+	height: 48px;
+	padding: 4px;
+	border: 2px solid #baacd8;
+	border-radius: 4px;
+}
+
 .mainNav {
 	grid-area: nav;
 }
 
 .mainNav ul {
 	display: grid;
-	grid-template-columns: repeat(4, 1fr);
+	grid-template-columns: repeat(5, 1fr);
 	text-align: center;
 	align-items: center;
 	height: 100%;
