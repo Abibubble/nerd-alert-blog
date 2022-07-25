@@ -39,7 +39,7 @@ export default function SingleAuthor(author) {
 // Collect a single author from the content service, and pass it in as a page prop before the page loads
 export async function getServerSideProps(ctx) {
 	let { id } = ctx.query;
-	let author = await contentSvc(`authors?filters[id]=${id}&populate=*`);
+	let author = await contentSvc(`authors/${id}?populate=*`);
 	author = author[0].attributes;
 	return { props: { author } };
 }

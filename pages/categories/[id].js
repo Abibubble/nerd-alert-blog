@@ -30,7 +30,7 @@ export default function SingleCategory({ categoryName, articles }) {
 									key={article.id}
 									className={card.card}
 								>
-									<p key={article.id}>{article.title}</p>
+									<p>{article.title}</p>
 								</a>
 							);
 						})}
@@ -44,8 +44,8 @@ export default function SingleCategory({ categoryName, articles }) {
 // Collect a single category and all the articles from the content service, and pass it in as a page prop before the page loads
 export async function getServerSideProps(ctx) {
 	let { id } = ctx.query;
-	let category = await contentSvc(`categories?filters[id]=${id}&populate=*`);
-	const categoryName = await category[0].attributes.name;
+	let category = await contentSvc(`categories/${id}?populate=*`);
+	const categoryName = await category.attributes.name;
 	const articles = await contentSvc(
 		`articles?filters[categories][name]=${categoryName}&populate=*`
 	);

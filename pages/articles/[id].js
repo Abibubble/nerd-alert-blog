@@ -18,17 +18,21 @@ export default function SingleArticle(article) {
 				description={`${article.title}, an article on the NerdAlert site.`}
 			>
 				<div className={styles.container}>
-					<div className={styles.cardImageContainer}>
-						<Image
-							className={styles.cardImage}
-							src={article.image.data.attributes.formats.small.url}
-							alt={article.image.data.attributes.alternativeText}
-							layout="fill"
-							objectFit="contain"
-						/>
-					</div>
+					{article.image.data !== null && (
+						<div className={styles.cardImageContainer}>
+							<Image
+								className={styles.cardImage}
+								src={article.image.data.attributes.formats.small.url}
+								alt={article.image.data.attributes.alternativeText}
+								layout="fill"
+								objectFit="contain"
+							/>
+						</div>
+					)}
 					<h2 className={styles.title}>{article.title}</h2>
-					<p>{article.author.data.attributes.name}</p>
+					{article.author.data !== null && (
+						<p>{article.author.data.attributes.name}</p>
+					)}
 					<p>{new Date(article.publishedAt).toLocaleDateString('en-gb')}</p>
 					<p className={styles.description}>{article.content}</p>
 				</div>
@@ -40,7 +44,7 @@ export default function SingleArticle(article) {
 // Collect a single article from the content service, and pass it in as a page prop before the page loads
 export async function getServerSideProps(ctx) {
 	let { id } = ctx.query;
-	let article = await contentSvc(`articles?filters[id]=${id}&populate=*`);
-	article = article[0].attributes;
+	let article = await contentSvc(`articles/${id}?populate=*`);
+	article = article.attributes;
 	return { props: { article } };
 }

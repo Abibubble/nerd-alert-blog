@@ -22,21 +22,26 @@ export default function AllArticles({ allArticles }) {
 								className={card.card}
 							>
 								<div className={card.cardImageContainer}>
-									<Image
-										className={card.cardImage}
-										src={
-											article.attributes.image.data.attributes.formats.small.url
-										}
-										alt="NerdAlert Logo, constisting of an icon of a laptop on a purple background with the text 'NerdAlert'"
-										layout="fill"
-										objectFit="contain"
-									/>
+									{article.attributes.image && (
+										<Image
+											className={card.cardImage}
+											src={
+												article.attributes.image.data.attributes.formats.small
+													.url
+											}
+											alt="NerdAlert Logo, constisting of an icon of a laptop on a purple background with the text 'NerdAlert'"
+											layout="fill"
+											objectFit="contain"
+										/>
+									)}
 								</div>
 								<h2>{article.attributes.title}</h2>
 								<p>{article.attributes.tagline}</p>
-								<p className={card.authorName}>
-									{article.attributes.author.data.attributes.name}
-								</p>
+								{article.attributes.author && (
+									<p className={card.authorName}>
+										{article.attributes.author.data.attributes.name}
+									</p>
+								)}
 							</a>
 						);
 					})}

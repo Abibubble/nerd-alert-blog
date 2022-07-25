@@ -31,7 +31,7 @@ export default function SingleVideo(video) {
 // Collect a single video from the content service, and pass it in as a page prop before the page loads
 export async function getServerSideProps(ctx) {
 	let { id } = ctx.query;
-	let video = await contentSvc(`videos?filters[id]=${id}&populate=*`);
+	let video = await contentSvc(`videos/${id}?populate=*`);
 	video = video[0].attributes;
 	return { props: { video } };
 }
