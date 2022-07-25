@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import styles from '@/styles/Layout.module.css';
 import Header from './header';
 import Footer from './footer';
-import Showcase from './showcase';
+// import Showcase from './showcase';
 
 export default function Layout({
 	title,
@@ -55,7 +55,7 @@ export default function Layout({
 			<Header />
 
 			<main className={styles.main}>
-				{router.pathname === '/' && <Showcase />}
+				{/* {router.pathname === '/' && <Showcase />} */}
 				<div className={styles.content}>{children}</div>
 			</main>
 

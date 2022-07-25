@@ -1,7 +1,20 @@
 import Image from 'next/image';
+import { useState } from 'react';
+import { useRouter } from 'next/router';
 import styles from '@/styles/Header.module.css';
+import { BiSearch } from 'react-icons/fa';
 
 export default function Header() {
+	const [term, setTerm] = useState('');
+
+	const router = useRouter();
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		router.push(`/search?term=${term}`);
+		setTerm('');
+	};
+
 	return (
 		<header className={styles.header}>
 			<a href="/">
@@ -18,7 +31,14 @@ export default function Header() {
 			</a>
 
 			<div className={styles.search}>
-				<input type="text" placeholder="Search" />
+				<form onSubmit={handleSubmit}>
+					<input
+						type="text"
+						placeholder="Search"
+						value={term}
+						onChange={(e) => setTerm(e.target.value)}
+					/>
+				</form>
 			</div>
 
 			<nav className={styles.mainNav}>
