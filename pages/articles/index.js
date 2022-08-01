@@ -1,10 +1,13 @@
 import Image from 'next/image';
 import Layout from '@/components/layout';
+import Pagination from '@/components/pagination';
 import styles from '@/styles/Common.module.css';
 import card from '@/styles/Card.module.css';
 import contentSvc from '@/services/content-svc';
+import paginationSvc from '@/services/pagination-svc';
+import { PER_PAGE } from '@/config/index';
 
-export default function AllArticles({ allArticles }) {
+export default function AllArticles({ allArticles, currentPage, total }) {
 	return (
 		<>
 			<Layout
@@ -15,7 +18,6 @@ export default function AllArticles({ allArticles }) {
 
 				<div className={card.grid}>
 					{allArticles.map((article) => {
-						console.log(article);
 						return (
 							<a
 								href={`/articles/${article.id}`}
@@ -42,15 +44,32 @@ export default function AllArticles({ allArticles }) {
 						);
 					})}
 				</div>
+
+				<Pagination page={currentPage} total={total} perPage={PER_PAGE} />
 			</Layout>
 		</>
 	);
 }
 
 // Collect all articles from the content service, and pass them in as a page prop before the page loads
-AllArticles.getInitialProps = async (ctx) => {
+AllArticles.getInitialProps = async (ctx, query) => {
+	let { page } = ctx.query;
+	if (!page) {
+		page = 1;
+	}
+
+	// Fetch all articles from the content service
 	const allArticles = await contentSvc(
-		'articles?sort=publishedAt:ASC&populate=*'
+		`articles?sort=publishedAt:ASC&pagination[page]=${page}&pagination[pageSize]=${PER_PAGE}&populate=*`
 	);
-	return { allArticles };
+	// Fetch number of articles for pagination
+	const paginationArticles = await paginationSvc(
+		`articles?sort=publishedAt:ASC&pagination[page]=${page}&pagination[pageSize]=${PER_PAGE}&populate=*`
+	);
+
+	const currentPage = +page;
+
+	const total = paginationArticles.meta.pagination.total;
+
+	return { allArticles, currentPage, total };
 };

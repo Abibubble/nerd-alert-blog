@@ -18,7 +18,7 @@ export default function SingleArticle(article) {
 				description={`${article.title}, an article on the NerdAlert site.`}
 			>
 				<div className={styles.container}>
-					{article.image.data !== null && (
+					{article.image !== null && (
 						<div className={styles.cardImageContainer}>
 							<Image
 								className={styles.cardImage}
@@ -30,7 +30,7 @@ export default function SingleArticle(article) {
 						</div>
 					)}
 					<h2 className={styles.title}>{article.title}</h2>
-					{article.author.data !== null && <p>{article.author.name}</p>}
+					{article.author !== null && <p>{article.author.name}</p>}
 					<p>{new Date(article.publishedAt).toLocaleDateString('en-gb')}</p>
 					<p className={styles.description}>{article.content}</p>
 				</div>

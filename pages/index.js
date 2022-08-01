@@ -42,7 +42,7 @@ export default function Home({ allArticles }) {
 // Collect all articles from the content service, and pass them in as a page prop before the page loads
 Home.getInitialProps = async (ctx) => {
 	const allArticles = await contentSvc(
-		'articles?sort=publishedAt:ASC&pagination[pageSize]=3&pagination[page]=1&populate=*'
+		'articles?sort=publishedAt:ASC&pagination[pageSize]=6&pagination[page]=1&populate=*'
 	);
 	return { allArticles };
 };
