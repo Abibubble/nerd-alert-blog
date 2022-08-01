@@ -40,6 +40,6 @@ export default function SingleAuthor(author) {
 export async function getServerSideProps(ctx) {
 	let { id } = ctx.query;
 	let author = await contentSvc(`authors/${id}?populate=*`);
-	author = author[0].attributes;
+	author = author.attributes;
 	return { props: { author } };
 }

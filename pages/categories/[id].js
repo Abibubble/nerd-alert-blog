@@ -22,15 +22,13 @@ export default function SingleCategory({ categoryName, articles }) {
 					<hr className={styles.hr} />
 					<div className={card.grid}>
 						{articles.map((article) => {
-							article = article.attributes;
-
 							return (
 								<a
 									href={`/articles/${article.id}`}
 									key={article.id}
 									className={card.card}
 								>
-									<p>{article.title}</p>
+									<p>{article.attributes.title}</p>
 								</a>
 							);
 						})}
