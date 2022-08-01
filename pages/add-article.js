@@ -52,7 +52,10 @@ export default function AddArticle() {
 
 	return (
 		<>
-			<Layout title="NerdAlert | Add Article">
+			<Layout
+				title="NerdAlert | Add Article"
+				description="Add a new article to the NerdAlert blog site."
+			>
 				<h1 className={styles.title}>Add Article</h1>
 				<ToastContainer />
 				<form className={form.form} onSubmit={handleSubmit}>

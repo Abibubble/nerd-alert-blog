@@ -14,8 +14,8 @@ export default function Search({ articles, videos, categories }) {
 	return (
 		<>
 			<Layout
-				title="NerdAlert Blog | All Articles"
-				description="A list of all the articles available on the NerdAlert site."
+				title={`NerdAlert Blog | Search - ${term}`}
+				description={`Search results for ${term} on the NerdAlert site.`}
 			>
 				<h1 className={styles.title}>Search results</h1>
 				<p>Search results for &quot;{term}&quot;</p>

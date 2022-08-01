@@ -50,7 +50,10 @@ export default function AddCategory() {
 
 	return (
 		<>
-			<Layout title="NerdAlert | Add Category">
+			<Layout
+				title="NerdAlert | Add Category"
+				description="Add a new category to the NerdAlert blog site."
+			>
 				<h1 className={styles.title}>Add Category</h1>
 				<ToastContainer />
 				<form className={form.form} onSubmit={handleSubmit}>

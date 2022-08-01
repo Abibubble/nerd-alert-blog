@@ -75,7 +75,10 @@ export default function EditArticle(article) {
 
 	return (
 		<>
-			<Layout title="NerdAlert | Edit Article">
+			<Layout
+				title="NerdAlert | Edit Article"
+				description="Edit an article on the NerdAlert site."
+			>
 				<h1 className={styles.title}>Edit Article</h1>
 				<ToastContainer />
 				<form className={form.form} onSubmit={handleSubmit}>

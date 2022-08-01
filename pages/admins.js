@@ -6,8 +6,14 @@ import contentSvc from '@/services/content-svc';
 export default function Admins({ allArticles }) {
 	return (
 		<>
-			<Layout>
+			<Layout
+				title="NerdAlert Blog | Admin"
+				description="The admin page on the NerdAlert site."
+			>
 				<h1 className={styles.title}>Welcome back, Nerd!</h1>
+				<a href="/add-category">Add a new category</a>
+				<a href="/add-article">Add a new article</a>
+				<a href="/articles/edit/1">Edit article 1</a>
 			</Layout>
 		</>
 	);

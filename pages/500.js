@@ -8,7 +8,7 @@ export default function InternalServer() {
 		<Layout
 			title="NerdAlert Blog | Error 500"
 			description="500 page for the NerdAlert Blog. Internal server error."
-			additionalKeywords="500, error, not, found"
+			additionalKeywords="500, error, internal, server"
 		>
 			<div className={styles.error}>
 				<h1>
