@@ -30,8 +30,8 @@ export default function AllAuthors({ allAuthors }) {
 										objectFit="contain"
 									/>
 								</div>
-								<h2>{author.name}</h2>
-								<p>{author.tagline}</p>
+								<h2 className={card.authorName}>{author.name}</h2>
+								<p className={card.tagline}>{author.tagline}</p>
 							</a>
 						);
 					})}

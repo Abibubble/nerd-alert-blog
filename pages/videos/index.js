@@ -1,9 +1,12 @@
 import Layout from '@/components/layout';
+import Pagination from '@/components/pagination';
 import styles from '@/styles/Common.module.css';
 import card from '@/styles/Card.module.css';
 import contentSvc from '@/services/content-svc';
+import paginationSvc from '@/services/pagination-svc';
+import { PER_PAGE } from '@/config/index';
 
-export default function AllVideos({ allVideos }) {
+export default function AllVideos({ allVideos, currentPage, total }) {
 	return (
 		<Layout
 			title="NerdAlert Blog | All Videos"
@@ -21,17 +24,36 @@ export default function AllVideos({ allVideos }) {
 						>
 							<span className={card.cardImageContainer}></span>
 							<h2>{video.title}</h2>
-							<p className={card.authorName}>{video.author.name}</p>
+							<p className={card.authorArticle}>{video.author.name}</p>
 						</a>
 					);
 				})}
 			</div>
+
+			<Pagination page={currentPage} total={total} perPage={PER_PAGE} />
 		</Layout>
 	);
 }
 
 // Collect all videos from the content service, and pass them in as a page prop before the page loads
 AllVideos.getInitialProps = async (ctx) => {
-	const allVideos = await contentSvc('videos?sort=publishedAt:ASC&populate=*');
-	return { allVideos };
+	let { page } = ctx.query;
+	if (!page) {
+		page = 1;
+	}
+
+	const allVideos = await contentSvc(
+		`videos?sort=publishedAt:ASC&pagination[page]=${page}&pagination[pageSize]=${PER_PAGE}&populate=*`
+	);
+
+	// Fetch number of articles for pagination
+	const paginationVideos = await paginationSvc(
+		`videos?sort=publishedAt:ASC&pagination[page]=${page}&pagination[pageSize]=${PER_PAGE}&populate=*`
+	);
+
+	const currentPage = +page;
+
+	const total = paginationVideos.meta.pagination.total;
+
+	return { allVideos, currentPage, total };
 };

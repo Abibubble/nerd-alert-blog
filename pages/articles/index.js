@@ -38,7 +38,7 @@ export default function AllArticles({ allArticles, currentPage, total }) {
 								<h2>{article.title}</h2>
 								<p>{article.tagline}</p>
 								{article.author && (
-									<p className={card.authorName}>{article.author.name}</p>
+									<p className={card.authorArticle}>{article.author.name}</p>
 								)}
 							</a>
 						);
@@ -52,7 +52,7 @@ export default function AllArticles({ allArticles, currentPage, total }) {
 }
 
 // Collect all articles from the content service, and pass them in as a page prop before the page loads
-AllArticles.getInitialProps = async (ctx, query) => {
+AllArticles.getInitialProps = async (ctx) => {
 	let { page } = ctx.query;
 	if (!page) {
 		page = 1;
@@ -62,6 +62,7 @@ AllArticles.getInitialProps = async (ctx, query) => {
 	const allArticles = await contentSvc(
 		`articles?sort=publishedAt:ASC&pagination[page]=${page}&pagination[pageSize]=${PER_PAGE}&populate=*`
 	);
+
 	// Fetch number of articles for pagination
 	const paginationArticles = await paginationSvc(
 		`articles?sort=publishedAt:ASC&pagination[page]=${page}&pagination[pageSize]=${PER_PAGE}&populate=*`

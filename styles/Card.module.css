@@ -1,10 +1,9 @@
 .grid {
-	display: flex;
-	align-items: center;
+	display: grid;
+	grid-template-columns: 1fr;
 	justify-content: center;
-	flex-wrap: wrap;
 	max-width: 900px;
-	margin: auto;
+	margin: 0 auto;
 	padding-top: 32px;
 }
 
@@ -12,12 +11,11 @@
 	margin: 0.5rem;
 	padding: 1rem;
 	text-align: left;
-	color: inherit;
-	text-decoration: none;
 	border: 2px solid #eaeaea;
 	border-radius: 10px;
 	transition: color 0.3s ease, border-color 0.3s ease;
-	max-width: 280px;
+	width: 280px;
+	height: 370px;
 }
 
 .card:hover,
@@ -27,7 +25,7 @@
 }
 
 .cardImageContainer {
-	height: 240px;
+	height: 200px;
 	width: 240px;
 	position: relative;
 }
@@ -37,19 +35,40 @@
 	max-width: 100%;
 }
 
-.card h2 {
+.authorName {
 	margin: 0 0 1rem 0;
+	padding-top: 8px;
 	font-size: 1.5rem;
+	font-style: italic;
 }
 
-.card p {
+.authorArticle {
+	margin: 0 0 1rem 0;
+	padding-top: 8px;
+	font-size: 1rem;
+	font-style: italic;
+}
+
+.tagline {
 	margin: 0;
-	font-size: 1.25rem;
+	font-size: 1.15rem;
 	line-height: 1.5;
 }
 
-.authorName {
-	padding-top: 8px;
-	font-size: 0.8rem;
-	font-style: italic;
+@media screen and (min-width: 768px) {
+	.grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media screen and (min-width: 992px) {
+	.grid {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+@media screen and (min-width: 1140px) {
+	.grid {
+		grid-template-columns: repeat(4, 1fr);
+	}
 }
