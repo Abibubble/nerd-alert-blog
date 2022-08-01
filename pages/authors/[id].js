@@ -3,6 +3,9 @@ import Image from 'next/image';
 import Layout from '@/components/layout';
 import styles from '@/styles/SinglePages.module.css';
 import contentSvc from '@/services/content-svc';
+import { marked } from 'marked';
+
+const xss = require('xss');
 
 let id;
 
@@ -10,6 +13,7 @@ export default function SingleAuthor(author) {
 	const router = useRouter();
 	id = router.query.id;
 	author = author.author;
+	const aboutYou = xss(marked.parse(author.aboutYou));
 
 	return (
 		<>
@@ -21,7 +25,7 @@ export default function SingleAuthor(author) {
 					<h2 className={styles.title}>{author.name}</h2>
 					<p className={styles.tagline}>{author.tagline}</p>
 					<hr className={styles.hr} />
-					<p className={styles.description}>{author.aboutYou}</p>
+					<div dangerouslySetInnerHTML={{ __html: aboutYou }} />
 					<div className={styles.avatarContainer}>
 						<Image
 							src={author.image.formats.small.url}

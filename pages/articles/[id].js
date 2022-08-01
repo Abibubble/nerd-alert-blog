@@ -3,6 +3,9 @@ import Image from 'next/image';
 import Layout from '@/components/layout';
 import styles from '@/styles/SinglePages.module.css';
 import contentSvc from '@/services/content-svc';
+import { marked } from 'marked';
+
+const xss = require('xss');
 
 let id;
 
@@ -10,6 +13,7 @@ export default function SingleArticle(article) {
 	const router = useRouter();
 	id = router.query.id;
 	article = article.article;
+	const articleContent = xss(marked.parse(article.content));
 
 	return (
 		<>
@@ -32,7 +36,7 @@ export default function SingleArticle(article) {
 					<h2 className={styles.title}>{article.title}</h2>
 					{article.author !== null && <p>{article.author.name}</p>}
 					<p>{new Date(article.publishedAt).toLocaleDateString('en-gb')}</p>
-					<p className={styles.description}>{article.content}</p>
+					<div dangerouslySetInnerHTML={{ __html: articleContent }} />
 				</div>
 			</Layout>
 		</>
