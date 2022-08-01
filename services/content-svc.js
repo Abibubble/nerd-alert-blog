@@ -5,6 +5,7 @@ const contentSvc = async (model) => {
 	console.log(`Starting contentSvc for ${model}`);
 
 	const url = `${API_URL}/api/${model}`;
+	console.log(url);
 	try {
 		const cmsResponse = await axios
 			.get(url)
