@@ -32,6 +32,12 @@
 	margin-bottom: 20px;
 }
 
+.imageContainer {
+	height: 240px;
+	width: 240px;
+	position: relative;
+}
+
 @media screen and (max-width: 600px) {
 	.grid {
 		grid-template-columns: 1fr;

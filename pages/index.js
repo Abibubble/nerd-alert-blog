@@ -14,7 +14,7 @@ export default function Home({ allArticles }) {
 					{allArticles.map((article) => {
 						return (
 							<a
-								href={`/articles/${article.slug}`}
+								href={`/articles/${article.id}`}
 								key={article.id}
 								className={card.card}
 							>

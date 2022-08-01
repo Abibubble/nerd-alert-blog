@@ -41,7 +41,6 @@ export default function AddArticle() {
 			toast.error('Something went wrong');
 		} else {
 			const article = await res.json();
-			console.log(article.data.id);
 			router.push(`/articles/${article.data.id}`);
 		}
 	};

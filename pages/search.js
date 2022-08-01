@@ -40,7 +40,6 @@ export default function Search({ articles, videos, categories }) {
 					</>
 				)}
 
-				{console.log(articles)}
 				{articles.length !== 0 && (
 					<>
 						<h2>Articles</h2>

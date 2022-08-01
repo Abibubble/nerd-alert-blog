@@ -35,13 +35,10 @@ export default function AddCategory() {
 			body: JSON.stringify({ data: values }),
 		});
 
-		console.log('res', res);
-
 		if (!res.ok) {
 			toast.error('Something went wrong');
 		} else {
 			const category = await res.json();
-			console.log(category.data.id);
 			router.push(`/categories/${category.data.id}`);
 		}
 	};

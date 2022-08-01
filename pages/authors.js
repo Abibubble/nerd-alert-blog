@@ -25,9 +25,11 @@ export default function AllAuthors({ allAuthors }) {
 									<Image
 										className={card.cardImage}
 										src={
-											author.attributes.avatar.data.attributes.formats.small.url
+											author.attributes.image.data.attributes.formats.small.url
 										}
-										alt="NerdAlert Logo, constisting of an icon of a laptop on a purple background with the text 'NerdAlert'"
+										alt={
+											author.attributes.image.data.attributes.alternativeText
+										}
 										layout="fill"
 										objectFit="contain"
 									/>

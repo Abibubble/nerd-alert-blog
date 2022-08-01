@@ -1,4 +1,4 @@
-import { FaImage } from 'react-icons/fa';
+import { FaImage, FaExclamationTriangle } from 'react-icons/fa';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 // import { parseCookies } from '@/helpers/index';
@@ -15,7 +15,6 @@ import contentSvc from '@/services/content-svc';
 
 export default function EditArticle(article) {
 	article = article.article;
-	console.log(article);
 
 	const [values, setValues] = useState({
 		title: article.attributes.title,
@@ -23,11 +22,11 @@ export default function EditArticle(article) {
 		content: article.attributes.content,
 	});
 
-	// const [imagePreview, setImagePreview] = useState(
-	// 	article.attributes.image.data
-	// 		? article.attributes.image.data.attributes.formats.thumbnail.url
-	// 		: null
-	// );
+	const [imagePreview, setImagePreview] = useState(
+		article.attributes.image.data
+			? article.attributes.image.data.attributes.url
+			: null
+	);
 
 	const [showModal, setShowModal] = useState(false);
 
@@ -66,12 +65,13 @@ export default function EditArticle(article) {
 		setValues({ ...values, [name]: value });
 	};
 
-	// const imageUploaded = async (e) => {
-	// 	const res = await fetch(`${API_URL}/api/articles/${article.id}`);
-	// 	const data = await res.json();
-	// 	setImagePreview(data.image.formats.thumbnail.url);
-	// 	setShowModal(false);
-	// };
+	const imageUploaded = async (e) => {
+		const res = await fetch(`${API_URL}/api/articles/${article.id}`);
+		const data = await res.json();
+		setImagePreview(article.attributes.image.data);
+		setShowModal(false);
+		router.reload();
+	};
 
 	return (
 		<>
@@ -103,7 +103,7 @@ export default function EditArticle(article) {
 						</div>
 
 						<div>
-							<label htmlFor="title">Content</label>
+							<label htmlFor="content">Content</label>
 							<textarea
 								type="text"
 								id="content"
@@ -112,6 +112,7 @@ export default function EditArticle(article) {
 								onChange={handleInputChange}
 							/>
 						</div>
+
 						<button type="submit" value="Submit article">
 							Submit article
 						</button>
@@ -119,28 +120,49 @@ export default function EditArticle(article) {
 				</form>
 
 				<h2>Event Image</h2>
-				{/* {imagePreview ? (
-					<Image
-						src={imagePreview}
-						alt="TODO: Replace this alt text"
-						height={100}
-						width={170}
-					/>
+				{imagePreview ? (
+					<>
+						<div className={form.imageContainer}>
+							<Image
+								src={imagePreview}
+								alt={article.attributes.image.data.attributes.alternativeText}
+								layout="fill"
+								objectFit="contain"
+							/>
+						</div>
+						<p className={form.imageAltText}>Alt text:</p>
+						{article.attributes.image.data.attributes.alternativeText !==
+						null ? (
+							<p className={form.image}>
+								&apos;$
+								{article.attributes.image.data.attributes.alternativeText}&apos;
+							</p>
+						) : (
+							<p className={form.image}>
+								<FaExclamationTriangle /> No alt text set
+							</p>
+						)}
+					</>
 				) : (
 					<p>No image uploaded</p>
-				)} */}
+				)}
 
-				<button onClick={() => setShowModal(true)}>
-					<FaImage /> Set Image
-				</button>
+				{imagePreview ? (
+					<button onClick={() => setShowModal(true)}>
+						<FaImage /> Change Image
+					</button>
+				) : (
+					<button onClick={() => setShowModal(true)}>
+						<FaImage /> Set Image
+					</button>
+				)}
 
 				<Modal show={showModal} onClose={() => setShowModal(false)}>
-					<p>Hi</p>
-					{/* <ImageUpload
+					<ImageUpload
 						itemId={article.id}
 						imageUploaded={imageUploaded}
-						token={token}
-					/> */}
+						model="article"
+					/>
 				</Modal>
 			</Layout>
 		</>

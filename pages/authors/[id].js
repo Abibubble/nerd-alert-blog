@@ -24,8 +24,8 @@ export default function SingleAuthor(author) {
 					<p className={styles.description}>{author.aboutYou}</p>
 					<div className={styles.avatarContainer}>
 						<Image
-							src={author.avatar.data.attributes.formats.small.url}
-							alt={author.avatar.data.attributes.alternativeText}
+							src={author.image.data.attributes.formats.small.url}
+							alt={author.image.data.attributes.alternativeText}
 							layout="fill"
 							priority={true}
 						/>
