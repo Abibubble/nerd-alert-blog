@@ -20,7 +20,7 @@ export default function AllCategories({ allCategories }) {
 								key={category.id}
 								className={card.card}
 							>
-								<h2>{category.attributes.name}</h2>
+								<h2>{category.name}</h2>
 							</a>
 						);
 					})}

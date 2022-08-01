@@ -18,9 +18,9 @@ export default function SingleVideo(video) {
 			>
 				<div className={styles.container}>
 					<h2 className={styles.title}>{video.title}</h2>
-					<p className={styles.tagline}>{video.author.data.attributes.name}</p>
+					<p className={styles.tagline}>{video.author.name}</p>
 					<video width="500px" controls>
-						<source src={video.video.data[0].attributes.url} />
+						<source src={video.video[0].url} />
 						Your browser does not support the video tag
 					</video>
 				</div>
@@ -33,6 +33,5 @@ export default function SingleVideo(video) {
 export async function getServerSideProps(ctx) {
 	let { id } = ctx.query;
 	let video = await contentSvc(`videos/${id}?populate=*`);
-	video = video.attributes;
 	return { props: { video } };
 }

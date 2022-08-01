@@ -24,8 +24,8 @@ export default function SingleAuthor(author) {
 					<p className={styles.description}>{author.aboutYou}</p>
 					<div className={styles.avatarContainer}>
 						<Image
-							src={author.image.data.attributes.formats.small.url}
-							alt={author.image.data.attributes.alternativeText}
+							src={author.image.formats.small.url}
+							alt={author.image.alternativeText}
 							layout="fill"
 							priority={true}
 						/>
@@ -40,6 +40,5 @@ export default function SingleAuthor(author) {
 export async function getServerSideProps(ctx) {
 	let { id } = ctx.query;
 	let author = await contentSvc(`authors/${id}?populate=*`);
-	author = author.attributes;
 	return { props: { author } };
 }

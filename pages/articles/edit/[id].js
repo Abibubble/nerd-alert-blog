@@ -17,15 +17,13 @@ export default function EditArticle(article) {
 	article = article.article;
 
 	const [values, setValues] = useState({
-		title: article.attributes.title,
-		tagline: article.attributes.tagline,
-		content: article.attributes.content,
+		title: article.title,
+		tagline: article.tagline,
+		content: article.content,
 	});
 
 	const [imagePreview, setImagePreview] = useState(
-		article.attributes.image.data
-			? article.attributes.image.data.attributes.url
-			: null
+		article.image.data ? article.image.url : null
 	);
 
 	const [showModal, setShowModal] = useState(false);
@@ -68,7 +66,7 @@ export default function EditArticle(article) {
 	const imageUploaded = async (e) => {
 		const res = await fetch(`${API_URL}/api/articles/${article.id}`);
 		const data = await res.json();
-		setImagePreview(article.attributes.image.data);
+		setImagePreview(article.image);
 		setShowModal(false);
 		router.reload();
 	};
@@ -128,17 +126,16 @@ export default function EditArticle(article) {
 						<div className={form.imageContainer}>
 							<Image
 								src={imagePreview}
-								alt={article.attributes.image.data.attributes.alternativeText}
+								alt={article.image.alternativeText}
 								layout="fill"
 								objectFit="contain"
 							/>
 						</div>
 						<p className={form.imageAltText}>Alt text:</p>
-						{article.attributes.image.data.attributes.alternativeText !==
-						null ? (
+						{article.image.alternativeText !== null ? (
 							<p className={form.image}>
 								&apos;$
-								{article.attributes.image.data.attributes.alternativeText}&apos;
+								{article.image.alternativeText}&apos;
 							</p>
 						) : (
 							<p className={form.image}>

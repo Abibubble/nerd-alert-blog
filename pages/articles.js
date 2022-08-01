@@ -15,6 +15,7 @@ export default function AllArticles({ allArticles }) {
 
 				<div className={card.grid}>
 					{allArticles.map((article) => {
+						console.log(article);
 						return (
 							<a
 								href={`/articles/${article.id}`}
@@ -22,25 +23,20 @@ export default function AllArticles({ allArticles }) {
 								className={card.card}
 							>
 								<div className={card.cardImageContainer}>
-									{article.attributes.image && (
+									{article.image && (
 										<Image
 											className={card.cardImage}
-											src={
-												article.attributes.image.data.attributes.formats.small
-													.url
-											}
+											src={article.image.formats.small.url}
 											alt="NerdAlert Logo, constisting of an icon of a laptop on a purple background with the text 'NerdAlert'"
 											layout="fill"
 											objectFit="contain"
 										/>
 									)}
 								</div>
-								<h2>{article.attributes.title}</h2>
-								<p>{article.attributes.tagline}</p>
-								{article.attributes.author && (
-									<p className={card.authorName}>
-										{article.attributes.author.data.attributes.name}
-									</p>
+								<h2>{article.title}</h2>
+								<p>{article.tagline}</p>
+								{article.author && (
+									<p className={card.authorName}>{article.author.name}</p>
 								)}
 							</a>
 						);

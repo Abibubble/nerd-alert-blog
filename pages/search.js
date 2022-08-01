@@ -32,7 +32,7 @@ export default function Search({ articles, videos, categories }) {
 										key={category.id}
 										className={card.card}
 									>
-										<h2>{category.attributes.name}</h2>
+										<h2>{category.name}</h2>
 									</a>
 								);
 							})}
@@ -51,7 +51,7 @@ export default function Search({ articles, videos, categories }) {
 										key={article.id}
 										className={card.card}
 									>
-										<h2>{article.attributes.title}</h2>
+										<h2>{article.title}</h2>
 									</a>
 								);
 							})}
@@ -70,7 +70,7 @@ export default function Search({ articles, videos, categories }) {
 										key={video.id}
 										className={card.card}
 									>
-										<h2>{video.attributes.title}</h2>
+										<h2>{video.title}</h2>
 									</a>
 								);
 							})}

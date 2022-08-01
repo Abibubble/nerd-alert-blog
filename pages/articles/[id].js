@@ -22,17 +22,15 @@ export default function SingleArticle(article) {
 						<div className={styles.cardImageContainer}>
 							<Image
 								className={styles.cardImage}
-								src={article.image.data.attributes.formats.small.url}
-								alt={article.image.data.attributes.alternativeText}
+								src={article.image.formats.small.url}
+								alt={article.image.alternativeText}
 								layout="fill"
 								objectFit="contain"
 							/>
 						</div>
 					)}
 					<h2 className={styles.title}>{article.title}</h2>
-					{article.author.data !== null && (
-						<p>{article.author.data.attributes.name}</p>
-					)}
+					{article.author.data !== null && <p>{article.author.name}</p>}
 					<p>{new Date(article.publishedAt).toLocaleDateString('en-gb')}</p>
 					<p className={styles.description}>{article.content}</p>
 				</div>
@@ -45,6 +43,5 @@ export default function SingleArticle(article) {
 export async function getServerSideProps(ctx) {
 	let { id } = ctx.query;
 	let article = await contentSvc(`articles/${id}?populate=*`);
-	article = article.attributes;
 	return { props: { article } };
 }

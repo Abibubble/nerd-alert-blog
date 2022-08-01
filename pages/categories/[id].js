@@ -28,7 +28,7 @@ export default function SingleCategory({ categoryName, articles }) {
 									key={article.id}
 									className={card.card}
 								>
-									<p>{article.attributes.title}</p>
+									<p>{article.title}</p>
 								</a>
 							);
 						})}
@@ -43,7 +43,7 @@ export default function SingleCategory({ categoryName, articles }) {
 export async function getServerSideProps(ctx) {
 	let { id } = ctx.query;
 	let category = await contentSvc(`categories/${id}?populate=*`);
-	const categoryName = await category.attributes.name;
+	const categoryName = await category.name;
 	const articles = await contentSvc(
 		`articles?filters[categories][name]=${categoryName}&populate=*`
 	);

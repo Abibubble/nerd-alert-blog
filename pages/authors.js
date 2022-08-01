@@ -24,18 +24,14 @@ export default function AllAuthors({ allAuthors }) {
 								<div className={card.cardImageContainer}>
 									<Image
 										className={card.cardImage}
-										src={
-											author.attributes.image.data.attributes.formats.small.url
-										}
-										alt={
-											author.attributes.image.data.attributes.alternativeText
-										}
+										src={author.image.formats.small.url}
+										alt={author.image.alternativeText}
 										layout="fill"
 										objectFit="contain"
 									/>
 								</div>
-								<h2>{author.attributes.name}</h2>
-								<p>{author.attributes.tagline}</p>
+								<h2>{author.name}</h2>
+								<p>{author.tagline}</p>
 							</a>
 						);
 					})}

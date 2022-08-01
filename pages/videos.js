@@ -20,10 +20,8 @@ export default function AllVideos({ allVideos }) {
 							className={card.card}
 						>
 							<span className={card.cardImageContainer}></span>
-							<h2>{video.attributes.title}</h2>
-							<p className={card.authorName}>
-								{video.attributes.author.data.attributes.name}
-							</p>
+							<h2>{video.title}</h2>
+							<p className={card.authorName}>{video.author.name}</p>
 						</a>
 					);
 				})}

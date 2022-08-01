@@ -39,7 +39,7 @@ export default function AddCategory() {
 			toast.error('Something went wrong');
 		} else {
 			const category = await res.json();
-			router.push(`/categories/${category.data.id}`);
+			router.push(`/categories/${category.id}`);
 		}
 	};
 

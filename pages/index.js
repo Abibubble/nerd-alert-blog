@@ -21,21 +21,15 @@ export default function Home({ allArticles }) {
 								<div className={card.cardImageContainer}>
 									<Image
 										className={card.cardImage}
-										src={
-											article.attributes.image.data.attributes.formats.small.url
-										}
-										alt={
-											article.attributes.image.data.attributes.alternativeText
-										}
+										src={article.image.formats.small.url}
+										alt={article.image.alternativeText}
 										layout="fill"
 										objectFit="contain"
 									/>
 								</div>
-								<h2>{article.attributes.title}</h2>
-								<p>{article.attributes.tagline}</p>
-								<p className={card.authorName}>
-									{article.attributes.author.data.attributes.name}
-								</p>
+								<h2>{article.title}</h2>
+								<p>{article.tagline}</p>
+								<p className={card.authorName}>{article.author.name}</p>
 							</a>
 						);
 					})}
