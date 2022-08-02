@@ -17,8 +17,8 @@ export default function SingleVideo(video) {
 				description={`${video.title}, a video on the NerdAlert site.`}
 			>
 				<div className={styles.container}>
-					<h2 className={styles.title}>{video.title}</h2>
-					<p className={styles.tagline}>{video.author.name}</p>
+					<h2 className={styles.articleTitle}>{video.title}</h2>
+					<p className={styles.authorName}>{video.author.name}</p>
 					<video width="500px" controls>
 						<source src={video.video[0].url} />
 						Your browser does not support the video tag
