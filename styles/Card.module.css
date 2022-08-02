@@ -2,12 +2,14 @@
 	display: grid;
 	grid-template-columns: 1fr;
 	justify-content: center;
-	max-width: 900px;
+	max-width: 992px;
+	width: 80%;
 	margin: 0 auto;
-	padding-top: 32px;
 }
 
-.card {
+.card,
+.authorCard,
+.categoryCard {
 	margin: 0.5rem;
 	padding: 1rem;
 	text-align: left;
@@ -15,7 +17,26 @@
 	border-radius: 10px;
 	transition: color 0.3s ease, border-color 0.3s ease;
 	width: 280px;
+	display: grid;
+	row-gap: 8px;
+}
+
+.card,
+.authorCard {
 	height: 370px;
+}
+
+.card {
+	grid-template-rows: 5fr 1fr 3fr 1fr;
+}
+
+.authorCard {
+	grid-template-rows: 4fr 1fr 3fr;
+}
+
+.categoryCard {
+	grid-template-rows: 1fr 1fr;
+	height: 280px;
 }
 
 .card:hover,
@@ -35,24 +56,29 @@
 	max-width: 100%;
 }
 
-.authorName {
-	margin: 0 0 1rem 0;
-	padding-top: 8px;
-	font-size: 1.5rem;
-	font-style: italic;
+.articleTitle {
+	text-decoration: underline;
+	text-align: center;
+	margin: 0;
 }
 
-.authorArticle {
-	margin: 0 0 1rem 0;
-	padding-top: 8px;
-	font-size: 1rem;
-	font-style: italic;
-}
-
-.tagline {
+.articleTagline {
 	margin: 0;
 	font-size: 1.15rem;
 	line-height: 1.5;
+}
+
+.articleAuthor {
+	font-size: 1rem;
+	font-style: italic;
+	text-align: center;
+}
+
+.authorName {
+	font-size: 1.5rem;
+	font-style: italic;
+	margin: 0;
+	text-align: center;
 }
 
 @media screen and (min-width: 768px) {

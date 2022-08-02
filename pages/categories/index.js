@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Layout from '@/components/layout';
 import styles from '@/styles/Common.module.css';
 import card from '@/styles/Card.module.css';
@@ -18,9 +19,18 @@ export default function AllCategories({ allCategories }) {
 							<a
 								href={`/categories/${category.id}`}
 								key={category.id}
-								className={card.card}
+								className={card.categoryCard}
 							>
-								<h2>{category.name}</h2>
+								<div className={card.cardImageContainer}>
+									<Image
+										className={card.cardImage}
+										src={category.image.formats.small.url}
+										alt={category.image.alternativeText}
+										layout="fill"
+										objectFit="contain"
+									/>
+								</div>
+								<h2 className={card.articleTitle}>{category.name}</h2>
 							</a>
 						);
 					})}

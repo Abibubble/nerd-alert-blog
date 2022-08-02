@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Layout from '@/components/layout';
 import Pagination from '@/components/pagination';
 import styles from '@/styles/Common.module.css';
@@ -22,9 +23,20 @@ export default function AllVideos({ allVideos, currentPage, total }) {
 							key={video.id}
 							className={card.card}
 						>
-							<span className={card.cardImageContainer}></span>
-							<h2>{video.title}</h2>
-							<p className={card.authorArticle}>{video.author.name}</p>
+							<span className={card.cardImageContainer}>
+								<Image
+									className={card.cardImage}
+									src={video.image.formats.small.url}
+									alt={video.image.alternativeText}
+									layout="fill"
+									objectFit="contain"
+								/>
+							</span>
+							<h2 className={card.articleTitle}>{video.title}</h2>
+							<p className={card.articleTagline}>{video.tagline}</p>
+							{video.author && (
+								<p className={card.articleAuthor}>{video.author.name}</p>
+							)}
 						</a>
 					);
 				})}

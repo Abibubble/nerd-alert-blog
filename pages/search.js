@@ -30,9 +30,18 @@ export default function Search({ articles, videos, categories }) {
 									<a
 										href={`/categories/${category.id}`}
 										key={category.id}
-										className={card.card}
+										className={card.categoryCard}
 									>
-										<h2>{category.name}</h2>
+										<div className={card.cardImageContainer}>
+											<Image
+												className={card.cardImage}
+												src={category.image.formats.small.url}
+												alt={category.image.alternativeText}
+												layout="fill"
+												objectFit="contain"
+											/>
+										</div>
+										<h2 className={card.articleTitle}>{category.name}</h2>
 									</a>
 								);
 							})}
@@ -51,7 +60,24 @@ export default function Search({ articles, videos, categories }) {
 										key={article.id}
 										className={card.card}
 									>
-										<h2>{article.title}</h2>
+										<div className={card.cardImageContainer}>
+											{article.image && (
+												<Image
+													className={card.cardImage}
+													src={article.image.formats.small.url}
+													alt="NerdAlert Logo, constisting of an icon of a laptop on a purple background with the text 'NerdAlert'"
+													layout="fill"
+													objectFit="contain"
+												/>
+											)}
+										</div>
+										<h2 className={card.articleTitle}>{article.title}</h2>
+										<p className={card.articleTagline}>{article.tagline}</p>
+										{article.author && (
+											<p className={card.articleAuthor}>
+												{article.author.name}
+											</p>
+										)}
 									</a>
 								);
 							})}
@@ -70,7 +96,20 @@ export default function Search({ articles, videos, categories }) {
 										key={video.id}
 										className={card.card}
 									>
-										<h2>{video.title}</h2>
+										<span className={card.cardImageContainer}>
+											<Image
+												className={card.cardImage}
+												src={video.image.formats.small.url}
+												alt={video.image.alternativeText}
+												layout="fill"
+												objectFit="contain"
+											/>
+										</span>
+										<h2 className={card.articleTitle}>{video.title}</h2>
+										<p className={card.articleTagline}>{video.tagline}</p>
+										{video.author && (
+											<p className={card.articleAuthor}>{video.author.name}</p>
+										)}
 									</a>
 								);
 							})}
@@ -102,14 +141,14 @@ export async function getServerSideProps(ctx) {
 	);
 
 	const videoTitle = await contentSvc(
-		`videos?filters[title][$containsi]=${term}`
+		`videos?filters[title][$containsi]=${term}&populate=*`
 	);
 	const videoTagline = await contentSvc(
-		`videos?filters[tagline][$containsi]=${term}`
+		`videos?filters[tagline][$containsi]=${term}&populate=*`
 	);
 
 	const categoryName = await contentSvc(
-		`categories?filters[name][$containsi]=${term}`
+		`categories?filters[name][$containsi]=${term}&populate=*`
 	);
 
 	// Add all data from the CMS into arrays

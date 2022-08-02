@@ -19,7 +19,7 @@ export default function AllAuthors({ allAuthors }) {
 							<a
 								href={`/authors/${author.id}`}
 								key={author.id}
-								className={card.card}
+								className={card.authorCard}
 							>
 								<div className={card.cardImageContainer}>
 									<Image
@@ -31,7 +31,7 @@ export default function AllAuthors({ allAuthors }) {
 									/>
 								</div>
 								<h2 className={card.authorName}>{author.name}</h2>
-								<p className={card.tagline}>{author.tagline}</p>
+								<p className={card.articleTagline}>{author.tagline}</p>
 							</a>
 						);
 					})}

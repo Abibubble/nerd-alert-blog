@@ -27,9 +27,11 @@ export default function Home({ allArticles }) {
 										objectFit="contain"
 									/>
 								</div>
-								<h2>{article.title}</h2>
-								<p>{article.tagline}</p>
-								<p className={card.authorName}>{article.author.name}</p>
+								<h2 className={card.articleTitle}>{article.title}</h2>
+								<p className={card.articleTagline}>{article.tagline}</p>
+								{article.author && (
+									<p className={card.articleAuthor}>{article.author.name}</p>
+								)}
 							</a>
 						);
 					})}
