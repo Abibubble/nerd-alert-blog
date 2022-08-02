@@ -28,7 +28,22 @@ export default function SingleCategory({ categoryName, articles }) {
 									key={article.id}
 									className={card.card}
 								>
-									<p>{article.title}</p>
+									<div className={card.cardImageContainer}>
+										{article.image && (
+											<Image
+												className={card.cardImage}
+												src={article.image.formats.small.url}
+												alt="NerdAlert Logo, constisting of an icon of a laptop on a purple background with the text 'NerdAlert'"
+												layout="fill"
+												objectFit="contain"
+											/>
+										)}
+									</div>
+									<h2 className={card.articleTitle}>{article.title}</h2>
+									<p className={card.articleTagline}>{article.tagline}</p>
+									{article.author && (
+										<p className={card.articleAuthor}>{article.author.name}</p>
+									)}
 								</a>
 							);
 						})}

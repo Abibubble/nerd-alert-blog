@@ -26,8 +26,20 @@ export default function SingleAuthor(author) {
 				additionalKeywords={author.name}
 			>
 				<div className={styles.container}>
-					<h2 className={styles.title}>{author.name}</h2>
-					<p className={styles.tagline}>{author.tagline}</p>
+					<div className={styles.authorGrid}>
+						<div>
+							<h2 className={styles.title}>{author.name}</h2>
+							<p className={styles.tagline}>{author.tagline}</p>
+						</div>
+						<div className={styles.avatarContainer}>
+							<Image
+								src={author.image.formats.small.url}
+								alt={author.image.alternativeText}
+								layout="fill"
+								priority={true}
+							/>
+						</div>
+					</div>
 					<hr className={styles.hr} />
 					<div
 						dangerouslySetInnerHTML={{ __html: aboutYou }}
@@ -50,14 +62,6 @@ export default function SingleAuthor(author) {
 						>
 							<FaLinkedin className={styles.icon} /> LinkedIn
 						</a>
-					</div>
-					<div className={styles.avatarContainer}>
-						<Image
-							src={author.image.formats.small.url}
-							alt={author.image.alternativeText}
-							layout="fill"
-							priority={true}
-						/>
 					</div>
 				</div>
 			</Layout>

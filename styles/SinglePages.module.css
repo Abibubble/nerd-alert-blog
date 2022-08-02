@@ -13,8 +13,8 @@
 }
 
 .avatarContainer {
-	width: 500px;
-	height: 500px;
+	width: 200px;
+	height: 200px;
 	margin: 0 auto;
 	position: relative;
 }
@@ -41,6 +41,13 @@
 
 .icon {
 	vertical-align: bottom;
+}
+
+.authorGrid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 8px;
+	align-items: center;
 }
 
 .aboutYou,
