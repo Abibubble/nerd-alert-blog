@@ -1,0 +1,8 @@
+.aboutUs {
+	line-height: 1.5;
+	margin-bottom: 16px;
+}
+
+.aboutUs a {
+	text-decoration: underline;
+}
