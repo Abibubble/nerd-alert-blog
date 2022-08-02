@@ -20,12 +20,21 @@ export default function SingleAuthor(author) {
 			<Layout
 				title={`NerdAlert Blog | ${author.name}`}
 				description={`Information about ${author.name}, an author on the NerdAlert site.`}
+				imageUrl={author.imageUrl}
+				imageAlt={author.image.alternativeText}
+				additionalKeywords={author.name}
 			>
 				<div className={styles.container}>
 					<h2 className={styles.title}>{author.name}</h2>
 					<p className={styles.tagline}>{author.tagline}</p>
 					<hr className={styles.hr} />
 					<div dangerouslySetInnerHTML={{ __html: aboutYou }} />
+					<a href={author.github} target="_blank" rel="noopener noreferrer">
+						GitHub
+					</a>
+					<a href={author.linkedin} target="_blank" rel="noopener noreferrer">
+						LinkedIn
+					</a>
 					<div className={styles.avatarContainer}>
 						<Image
 							src={author.image.formats.small.url}
