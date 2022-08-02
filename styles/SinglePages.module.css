@@ -31,6 +31,7 @@
 	height: 240px;
 	width: 240px;
 	position: relative;
+	margin: 0 auto;
 }
 
 .cardImage {
@@ -42,10 +43,26 @@
 	vertical-align: bottom;
 }
 
-.aboutYou {
+.aboutYou,
+.content {
 	line-height: 1.5;
 	margin-bottom: 32px;
 	text-align: left;
+}
+
+.content img {
+	width: 50%;
+	margin-left: 25%;
+}
+
+.articleTitle {
+	font-size: 2.5rem;
+}
+
+.authorName {
+	font-size: 1.25rem;
+	font-weight: bold;
+	margin-bottom: 16px;
 }
 
 .socialGrid {

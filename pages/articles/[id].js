@@ -33,10 +33,15 @@ export default function SingleArticle(article) {
 							/>
 						</div>
 					)}
-					<h2 className={styles.title}>{article.title}</h2>
-					{article.author !== null && <p>{article.author.name}</p>}
+					<h1 className={styles.articleTitle}>{article.title}</h1>
+					{article.author !== null && (
+						<p className={styles.authorName}>{article.author.name}</p>
+					)}
 					<p>{new Date(article.publishedAt).toLocaleDateString('en-gb')}</p>
-					<div dangerouslySetInnerHTML={{ __html: articleContent }} />
+					<div
+						dangerouslySetInnerHTML={{ __html: articleContent }}
+						className={styles.content}
+					/>
 				</div>
 			</Layout>
 		</>
