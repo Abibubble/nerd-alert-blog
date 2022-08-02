@@ -37,7 +37,9 @@ export default function SingleArticle(article) {
 					{article.author !== null && (
 						<p className={styles.authorName}>{article.author.name}</p>
 					)}
-					<p>{new Date(article.publishedAt).toLocaleDateString('en-gb')}</p>
+					<p className={styles.articleDate}>
+						{new Date(article.publishedAt).toLocaleDateString('en-gb')}
+					</p>
 					<div
 						dangerouslySetInnerHTML={{ __html: articleContent }}
 						className={styles.content}
