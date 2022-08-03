@@ -5,6 +5,8 @@ import mobile from '@/styles/Mobile.module.css';
 import { FaSearch, FaBars } from 'react-icons/fa';
 
 export default function Header() {
+	const [isNavExpanded, setIsNavExpanded] = useState(false);
+
 	const [term, setTerm] = useState('');
 
 	const router = useRouter();
@@ -13,10 +15,6 @@ export default function Header() {
 		e.preventDefault();
 		router.push(`/search?term=${term}`);
 		setTerm('');
-	};
-
-	const toggleMobileNav = () => {
-		console.log('Opening nav');
 	};
 
 	return (
@@ -36,12 +34,18 @@ export default function Header() {
 
 			<button
 				className={mobile.burgerIconContainer}
-				onClick={toggleMobileNav()}
+				onClick={() => {
+					setIsNavExpanded(!isNavExpanded);
+				}}
 			>
 				<FaBars className={mobile.burgerIcon} />
 			</button>
 
-			<nav className={mobile.mainNav} id="js-mobile-nav">
+			<nav
+				className={
+					isNavExpanded ? `${mobile.visibleMainNav}` : `${mobile.hiddenMainNav}`
+				}
+			>
 				<ul>
 					<li>
 						<a href="/articles">Articles</a>
