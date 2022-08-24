@@ -3,8 +3,7 @@ import Layout from '@/components/layout';
 import Pagination from '@/components/pagination';
 import styles from '@/styles/Common.module.css';
 import card from '@/styles/Card.module.css';
-import contentSvc from '@/services/content-svc';
-import paginationSvc from '@/services/pagination-svc';
+import articleSvc from '@/services/article-svc';
 import { PER_PAGE } from '@/config/index';
 
 export default function AllArticles({ allArticles, currentPage, total }) {
@@ -51,26 +50,26 @@ export default function AllArticles({ allArticles, currentPage, total }) {
 	);
 }
 
-// Collect all articles from the content service, and pass them in as a page prop before the page loads
-AllArticles.getInitialProps = async (ctx) => {
+export async function getServerSideProps(ctx) {
 	let { page } = ctx.query;
 	if (!page) {
 		page = 1;
 	}
 
-	// Fetch all articles from the content service
-	const allArticles = await contentSvc(
-		`articles?sort=publishedAt:ASC&pagination[page]=${page}&pagination[pageSize]=${PER_PAGE}&populate=*`
-	);
+	const query = {
+		sort: 'publishedAt:asc',
+		pagination: {
+			page: page,
+			pageSize: PER_PAGE,
+		},
+	};
 
-	// Fetch number of articles for pagination
-	const paginationArticles = await paginationSvc(
-		`articles?sort=publishedAt:ASC&pagination[page]=${page}&pagination[pageSize]=${PER_PAGE}&populate=*`
-	);
+	let allArticles = await articleSvc(query);
 
 	const currentPage = +page;
+	const total = allArticles.meta.pagination.total;
 
-	const total = paginationArticles.meta.pagination.total;
+	allArticles = allArticles.data;
 
-	return { allArticles, currentPage, total };
-};
+	return { props: { allArticles, currentPage, total } };
+}

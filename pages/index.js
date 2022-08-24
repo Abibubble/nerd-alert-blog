@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Layout from '@/components/layout';
 import styles from '@/styles/Common.module.css';
 import card from '@/styles/Card.module.css';
-import contentSvc from '@/services/content-svc';
+import articleSvc from '@/services/article-svc';
 
 export default function Home({ allArticles }) {
 	return (
@@ -41,10 +41,17 @@ export default function Home({ allArticles }) {
 	);
 }
 
-// Collect all articles from the content service, and pass them in as a page prop before the page loads
-Home.getInitialProps = async (ctx) => {
-	const allArticles = await contentSvc(
-		'articles?sort=publishedAt:ASC&pagination[pageSize]=6&pagination[page]=1&populate=*'
-	);
-	return { allArticles };
-};
+export async function getServerSideProps() {
+	const query = {
+		sort: 'publishedAt',
+		pagination: {
+			pageSize: 6,
+			page: 1,
+		},
+	};
+
+	let allArticles = await articleSvc(query);
+	allArticles = allArticles.data;
+
+	return { props: { allArticles } };
+}

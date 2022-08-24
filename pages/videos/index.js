@@ -3,8 +3,7 @@ import Layout from '@/components/layout';
 import Pagination from '@/components/pagination';
 import styles from '@/styles/Common.module.css';
 import card from '@/styles/Card.module.css';
-import contentSvc from '@/services/content-svc';
-import paginationSvc from '@/services/pagination-svc';
+import videoSvc from '@/services/video-svc';
 import { PER_PAGE } from '@/config/index';
 
 export default function AllVideos({ allVideos, currentPage, total }) {
@@ -47,25 +46,26 @@ export default function AllVideos({ allVideos, currentPage, total }) {
 	);
 }
 
-// Collect all videos from the content service, and pass them in as a page prop before the page loads
-AllVideos.getInitialProps = async (ctx) => {
+export async function getServerSideProps(ctx) {
 	let { page } = ctx.query;
 	if (!page) {
 		page = 1;
 	}
 
-	const allVideos = await contentSvc(
-		`videos?sort=publishedAt:ASC&pagination[page]=${page}&pagination[pageSize]=${PER_PAGE}&populate=*`
-	);
+	const query = {
+		sort: 'publishedAt:asc',
+		pagination: {
+			page: page,
+			pageSize: PER_PAGE,
+		},
+	};
 
-	// Fetch number of articles for pagination
-	const paginationVideos = await paginationSvc(
-		`videos?sort=publishedAt:ASC&pagination[page]=${page}&pagination[pageSize]=${PER_PAGE}&populate=*`
-	);
+	let allVideos = await videoSvc(query);
 
 	const currentPage = +page;
+	const total = allVideos.meta.pagination.total;
 
-	const total = paginationVideos.meta.pagination.total;
+	allVideos = allVideos.data;
 
-	return { allVideos, currentPage, total };
-};
+	return { props: { allVideos, currentPage, total } };
+}

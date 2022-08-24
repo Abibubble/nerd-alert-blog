@@ -1,18 +1,13 @@
-import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import Layout from '@/components/layout';
 import styles from '@/styles/SinglePages.module.css';
-import contentSvc from '@/services/content-svc';
+import authorSvc from '@/services/author-svc';
 import { marked } from 'marked';
 
 const xss = require('xss');
 
-let id;
-
 export default function SingleAuthor(author) {
-	const router = useRouter();
-	id = router.query.id;
 	author = author.author;
 	const aboutYou = xss(marked.parse(author.aboutYou));
 
@@ -69,9 +64,19 @@ export default function SingleAuthor(author) {
 	);
 }
 
-// Collect a single author from the content service, and pass it in as a page prop before the page loads
-export async function getServerSideProps(ctx) {
-	let { id } = ctx.query;
-	let author = await contentSvc(`authors/${id}?populate=*`);
+export async function getServerSideProps({ resolvedUrl }) {
+	let currentSlug = resolvedUrl.substring(9);
+
+	const query = {
+		filters: {
+			slug: {
+				$containsi: currentSlug,
+			},
+		},
+	};
+
+	let author = await authorSvc(query);
+	author = author.data[0];
+
 	return { props: { author } };
 }

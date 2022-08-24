@@ -1,16 +1,11 @@
-import { useRouter } from 'next/router';
 import Image from 'next/image';
 import Layout from '@/components/layout';
 import styles from '@/styles/SinglePages.module.css';
 import card from '@/styles/Card.module.css';
-import contentSvc from '@/services/content-svc';
-
-let id;
+import categorySvc from '@/services/category-svc';
+import articleSvc from '@/services/article-svc';
 
 export default function SingleCategory({ categoryName, articles }) {
-	const router = useRouter();
-	id = router.query.id;
-
 	return (
 		<>
 			<Layout
@@ -54,13 +49,33 @@ export default function SingleCategory({ categoryName, articles }) {
 	);
 }
 
-// Collect a single category and all the articles from the content service, and pass it in as a page prop before the page loads
-export async function getServerSideProps(ctx) {
-	let { id } = ctx.query;
-	let category = await contentSvc(`categories/${id}?populate=*`);
-	const categoryName = await category.name;
-	const articles = await contentSvc(
-		`articles?filters[categories][name]=${categoryName}&populate=*`
-	);
+export async function getServerSideProps({ resolvedUrl }) {
+	let currentSlug = resolvedUrl.substring(12);
+
+	const categoryQuery = {
+		filters: {
+			slug: {
+				$containsi: currentSlug,
+			},
+		},
+	};
+
+	let category = await categorySvc(categoryQuery);
+
+	const categoryName = await category.data[0].name;
+
+	const articlesQuery = {
+		filters: {
+			categories: {
+				name: {
+					$eq: categoryName,
+				},
+			},
+		},
+	};
+
+	let articles = await articleSvc(articlesQuery);
+	articles = articles.data;
+
 	return { props: { categoryName, articles } };
 }

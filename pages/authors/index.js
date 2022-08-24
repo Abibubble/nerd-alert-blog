@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Layout from '@/components/layout';
 import styles from '@/styles/Common.module.css';
 import card from '@/styles/Card.module.css';
-import contentSvc from '@/services/content-svc';
+import authorSvc from '@/services/author-svc';
 
 export default function AllAuthors({ allAuthors }) {
 	return (
@@ -41,8 +41,13 @@ export default function AllAuthors({ allAuthors }) {
 	);
 }
 
-// Collect all authors from the content service, and pass them in as a page prop before the page loads
-AllAuthors.getInitialProps = async (ctx) => {
-	const allAuthors = await contentSvc('authors?sort=name:ASC&populate=*');
-	return { allAuthors };
-};
+export async function getServerSideProps() {
+	const query = {
+		sort: 'name:asc',
+	};
+
+	let allAuthors = await authorSvc(query);
+	allAuthors = allAuthors.data;
+
+	return { props: { allAuthors } };
+}

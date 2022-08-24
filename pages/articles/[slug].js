@@ -1,17 +1,12 @@
-import { useRouter } from 'next/router';
 import Image from 'next/image';
 import Layout from '@/components/layout';
 import styles from '@/styles/SinglePages.module.css';
-import contentSvc from '@/services/content-svc';
+import articleSvc from '@/services/article-svc';
 import { marked } from 'marked';
 
 const xss = require('xss');
 
-let id;
-
 export default function SingleArticle(article) {
-	const router = useRouter();
-	id = router.query.id;
 	article = article.article;
 	const articleContent = xss(marked.parse(article.content));
 
@@ -50,9 +45,19 @@ export default function SingleArticle(article) {
 	);
 }
 
-// Collect a single article from the content service, and pass it in as a page prop before the page loads
-export async function getServerSideProps(ctx) {
-	let { id } = ctx.query;
-	let article = await contentSvc(`articles/${id}?populate=*`);
+export async function getServerSideProps({ resolvedUrl }) {
+	let currentSlug = resolvedUrl.substring(10);
+
+	const query = {
+		filters: {
+			slug: {
+				$containsi: currentSlug,
+			},
+		},
+	};
+
+	let article = await articleSvc(query);
+	article = article.data[0];
+
 	return { props: { article } };
 }

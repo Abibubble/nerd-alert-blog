@@ -1,13 +1,8 @@
-import { useRouter } from 'next/router';
 import Layout from '@/components/layout';
 import styles from '@/styles/SinglePages.module.css';
-import contentSvc from '@/services/content-svc';
-
-let id;
+import videoSvc from '@/services/video-svc';
 
 export default function SingleVideo(video) {
-	const router = useRouter();
-	id = router.query.id;
 	video = video.video;
 
 	return (
@@ -29,9 +24,19 @@ export default function SingleVideo(video) {
 	);
 }
 
-// Collect a single video from the content service, and pass it in as a page prop before the page loads
-export async function getServerSideProps(ctx) {
-	let { id } = ctx.query;
-	let video = await contentSvc(`videos/${id}?populate=*`);
+export async function getServerSideProps({ resolvedUrl }) {
+	let currentSlug = resolvedUrl.substring(10);
+
+	const query = {
+		filters: {
+			slug: {
+				$containsi: currentSlug,
+			},
+		},
+	};
+
+	let video = await videoSvc(query);
+	video = video.data[0];
+
 	return { props: { video } };
 }

@@ -1,15 +1,28 @@
 import axios from 'axios';
 import { API_URL } from '@/config/index';
 
-const contentSvc = async (model) => {
+const qs = require('qs');
+
+const contentSvc = async (model, query) => {
 	console.log(`Starting contentSvc for ${model}`);
 
-	const url = `${API_URL}/api/${model}`;
+	let url = `${API_URL}/api/${model}`;
+
+	if (query) {
+		query = qs.stringify(query, { encodeValuesOnly: true });
+		url += `?${query}`;
+	}
+
 	console.log(url);
+
 	try {
 		const cmsResponse = await axios
-			.get(url)
-			.then((response) => response.data.data);
+			.get(url, {
+				params: {
+					populate: '*',
+				},
+			})
+			.then((response) => response.data);
 		return cmsResponse;
 	} catch (e) {
 		console.error(e);

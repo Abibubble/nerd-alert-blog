@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Layout from '@/components/layout';
 import styles from '@/styles/Common.module.css';
 import card from '@/styles/Card.module.css';
-import contentSvc from '@/services/content-svc';
+import categorySvc from '@/services/category-svc';
 
 export default function AllCategories({ allCategories }) {
 	return (
@@ -40,10 +40,13 @@ export default function AllCategories({ allCategories }) {
 	);
 }
 
-// Collect all Categories from the content service, and pass them in as a page prop before the page loads
-AllCategories.getInitialProps = async (ctx) => {
-	const allCategories = await contentSvc(
-		'categories?sort=publishedAt:ASC&populate=*'
-	);
-	return { allCategories };
-};
+export async function getServerSideProps() {
+	const query = {
+		sort: 'publishedAt:asc',
+	};
+
+	let allCategories = await categorySvc(query);
+	allCategories = allCategories.data;
+
+	return { props: { allCategories } };
+}
