@@ -17,7 +17,7 @@ export default function AllCategories({ allCategories }) {
 					{allCategories.map((category) => {
 						return (
 							<a
-								href={`/categories/${category.id}`}
+								href={`/categories/${category.slug}`}
 								key={category.id}
 								className={card.categoryCard}
 							>

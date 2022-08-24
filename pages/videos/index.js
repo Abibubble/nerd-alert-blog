@@ -18,7 +18,7 @@ export default function AllVideos({ allVideos, currentPage, total }) {
 				{allVideos.map((video) => {
 					return (
 						<a
-							href={`/videos/${video.id}`}
+							href={`/videos/${video.slug}`}
 							key={video.id}
 							className={card.card}
 						>

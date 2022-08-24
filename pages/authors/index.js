@@ -17,7 +17,7 @@ export default function AllAuthors({ allAuthors }) {
 					{allAuthors.map((author) => {
 						return (
 							<a
-								href={`/authors/${author.id}`}
+								href={`/authors/${author.slug}`}
 								key={author.id}
 								className={card.authorCard}
 							>

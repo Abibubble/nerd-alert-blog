@@ -19,7 +19,7 @@ export default function SingleCategory({ categoryName, articles }) {
 						{articles.map((article) => {
 							return (
 								<a
-									href={`/articles/${article.id}`}
+									href={`/articles/${article.slug}`}
 									key={article.id}
 									className={card.card}
 								>
