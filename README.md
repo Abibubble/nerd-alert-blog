@@ -301,33 +301,17 @@ The W3C Markup Validator, W3C CSS Validator, JSHint were used to validate the pr
 
 1. W3C HTML Markup Validator
 
-   - [Homepage](https://validator.w3.org/nu/?doc=https%3A%2F%2Fms3-the-bar-blade.herokuapp.com%2Fhomepage)
-   - [Register](https://validator.w3.org/nu/?doc=https%3A%2F%2Fms3-the-bar-blade.herokuapp.com%2Fregister)
-   - [Log In](https://validator.w3.org/nu/?doc=https%3A%2F%2Fms3-the-bar-blade.herokuapp.com%2Flogin)
-   - Unfortunately, as it's not possible to log in using the Validator, it was only possible to test the 3 pages available to a user who isn't logged in.
+- [Page](LINK)
 
 2. W3C CSS Validator
 
-   - [Homepage](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fms3-the-bar-blade.herokuapp.com%2Fhomepage&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
-   - [Register](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fms3-the-bar-blade.herokuapp.com%2Fregister&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
-   - [Log In](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fms3-the-bar-blade.herokuapp.com%2Flogin&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
-   - Unfortunately, as it's not possible to log in using the Validator, it was only possible to test the 3 pages available to a user who isn't logged in.
-   - There is only one error appearing, which is from the Materialize CSS file.
-   - There are several warnings, mostly from the Materialize CSS file, but also three related to my purple variables. As these variables are acceptable CSS syntax, I've considered them to be not an error.
+- [Page](LINK)
 
 3. JSHint
-   - [JSHint](https://jshint.com/)
-   - There is one undefined variable, which is due to the jQuery `$`.
-   - There are three unused variables, which are used in onclick functions in my HTML.
+
+- [JSHint](https://jshint.com/)
 
 ![Image of JSHint results](docs/img/jshint1.png)
-![Image of JSHint results](docs/img/jshint2.png)
-![Image of JSHint results](docs/img/jshint3.png)
-
-4. PEP8 Online
-   - [PEP8 Online](http://pep8online.com/)
-
-![Image of PEP8 Online results](docs/img/pep8.png)
 
 ### Testing User Stories
 
@@ -344,30 +328,30 @@ The W3C Markup Validator, W3C CSS Validator, JSHint were used to validate the pr
 - All buttons describe what they're for in simple terms.
 - Icons are used to help convey meaning.
 
-##### Be able to register for an account.
+##### Search for a specific article, video or category.
 
-- The register button is clear to see on the navigation bar.
-- It only requires a username, a password, and a confirmation of that password to register an account.
+- The search bar is displayed prominently on the navbar on all pages.
 
-##### Search for a specific cocktail.
+##### Browse through all articles and videos.
 
-- The search bar is displayed prominently on the homepage for all users, whether logged in or not.
+- All articles are displayed on the homepage for users to view.
+- Articles and videos can be found via the navigation bar from any page.
 
-##### Browse through all cocktails.
+##### Learn more about the members of NerdAlert.
 
-- All cocktails are displayed on the homepage for all users to view.
-
-##### Get visual feedback when an action on the site is completed.
-
-- A flash message appears at the top of the screen when :
-  - Any item is added.
-  - Any item is edited.
-  - Any item is deleted.
-  - A user registers.
-  - A user logs in.
-  - A user logs out.
+- The About Us page provides information about NerdAlert as a group.
+- Each author page gives information aobut each member of NerdAlert.
 
 #### Returning Visitor Goals
+
+##### View the latest articles and videos without needing to search.
+
+- All articles and videos are sorted via their publication date.
+- The newest articles and videos will always be at the top.
+
+##### Search for articles and videos on a specific topic.
+
+- The search bar can be used to search for a term used in any article, video or category.
 
 ##### Navigation should be intuitive, with no need to use the browser's back button.
 
@@ -377,15 +361,17 @@ The W3C Markup Validator, W3C CSS Validator, JSHint were used to validate the pr
 ### Solved Bugs
 
 1. Bug
-   - Steps
+
+- Steps
 
 ### Known Bugs
 
-- None found, if any errors are found, please contact me via [my GitHub](https://github.com/Abibubble/) to get them fixed.
+- None known.
+- If any errors are found, please contact me via [my GitHub](https://github.com/Abibubble/) to get them fixed.
 
 ### Lighthouse
 
-I tested my website using DevTools Lighthouse feature, and got these results:
+I tested the site using DevTools Lighthouse feature, and got these results:
 
 #### Desktop
 
