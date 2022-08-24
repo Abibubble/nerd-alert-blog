@@ -3,13 +3,23 @@ import { useRouter } from 'next/router';
 import Layout from '@/components/layout';
 import styles from '@/styles/Common.module.css';
 import card from '@/styles/Card.module.css';
-import contentSvc from '@/services/content-svc';
+import videoSvc from '@/services/video-svc';
+import articleSvc from '@/services/article-svc';
+import categorySvc from '@/services/category-svc';
 
 let term;
 
 export default function Search({ articles, videos, categories }) {
 	const router = useRouter();
 	term = router.query.term;
+
+	let noResultsFound = false;
+
+	if (categories.length === 0 && videos.length === 0 && articles.length === 0) {
+		noResultsFound = true;
+	}
+
+	console.log('categories', categories);
 
 	return (
 		<>
@@ -26,6 +36,7 @@ export default function Search({ articles, videos, categories }) {
 						<h2>Categories</h2>
 						<div className={card.grid}>
 							{categories.map((category) => {
+								console.log(category);
 								return (
 									<a
 										href={`/categories/${category.id}`}
@@ -116,12 +127,18 @@ export default function Search({ articles, videos, categories }) {
 						</div>
 					</>
 				)}
+
+				{noResultsFound && (
+					<p>
+						Oh no! No results were found for &quot;{term}&quot;. Try searching
+						for something else.
+					</p>
+				)}
 			</Layout>
 		</>
 	);
 }
 
-// Collect all articles from the content service, and pass them in as a page prop before the page loads
 export async function getServerSideProps(ctx) {
 	const { term } = ctx.query;
 
@@ -129,27 +146,24 @@ export async function getServerSideProps(ctx) {
 	let categories = [];
 	let videos = [];
 
-	// Get the data for each filter from the CMS
-	const articleTitle = await contentSvc(
-		`articles?filters[title][$containsi]=${term}&populate=*`
-	);
-	const articleContent = await contentSvc(
-		`articles?filters[content][$containsi]=${term}&populate=*`
-	);
-	const articleTagline = await contentSvc(
-		`articles?filters[tagline][$containsi]=${term}&populate=*`
-	);
+	const queryFunc = (field) => {
+		return {
+			filters: {
+				[field]: {
+					$containsi: term,
+				},
+			},
+		};
+	};
 
-	const videoTitle = await contentSvc(
-		`videos?filters[title][$containsi]=${term}&populate=*`
-	);
-	const videoTagline = await contentSvc(
-		`videos?filters[tagline][$containsi]=${term}&populate=*`
-	);
+	const articleTitle = await articleSvc(queryFunc('title'));
+	const articleContent = await articleSvc(queryFunc('content'));
+	const articleTagline = await articleSvc(queryFunc('tagline'));
 
-	const categoryName = await contentSvc(
-		`categories?filters[name][$containsi]=${term}&populate=*`
-	);
+	const videoTitle = await videoSvc(queryFunc('title'));
+	const videoTagline = await videoSvc(queryFunc('tagline'));
+
+	const categoryName = await categorySvc(queryFunc('name'));
 
 	// Add all data from the CMS into arrays
 	function addResultsfromSearch(data) {
@@ -185,15 +199,19 @@ export async function getServerSideProps(ctx) {
 	}
 
 	// Ensure there are no duplicate objects being passed to the page
-	function makeUnique(arr) {
-		arr = arr.flat();
-		arr = [...new Map(arr.map((v) => [v.id, v])).values()];
-		return arr;
+	function makeUnique(array) {
+		array = array.flat();
+		array = [...new Map(array.map((v) => [v.id, v])).values()];
+		return array;
 	}
 
 	articles = makeUnique(articles);
 	categories = makeUnique(categories);
 	videos = makeUnique(videos);
+
+	articles = articles[0].data;
+	categories = categories[0].data;
+	videos = videos[0].data;
 
 	return { props: { articles, videos, categories } };
 }
