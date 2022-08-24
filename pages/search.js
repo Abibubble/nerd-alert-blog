@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import { useRouter } from 'next/router';
 import Layout from '@/components/layout';
 import styles from '@/styles/Common.module.css';
 import card from '@/styles/Card.module.css';
@@ -7,19 +6,12 @@ import videoSvc from '@/services/video-svc';
 import articleSvc from '@/services/article-svc';
 import categorySvc from '@/services/category-svc';
 
-let term;
-
-export default function Search({ articles, videos, categories }) {
-	const router = useRouter();
-	term = router.query.term;
-
+export default function Search({ articles, videos, categories, term }) {
 	let noResultsFound = false;
 
 	if (categories.length === 0 && videos.length === 0 && articles.length === 0) {
 		noResultsFound = true;
 	}
-
-	console.log('categories', categories);
 
 	return (
 		<>
@@ -28,7 +20,9 @@ export default function Search({ articles, videos, categories }) {
 				description={`Search results for ${term} on the NerdAlert site.`}
 			>
 				<h1 className={styles.title}>Search results</h1>
-				<p>Search results for &quot;{term}&quot;</p>
+				<h2 className={styles.results}>
+					Search results for &quot;{term}&quot; :
+				</h2>
 				<hr className={styles.hr} />
 
 				{categories.length !== 0 && (
@@ -36,7 +30,6 @@ export default function Search({ articles, videos, categories }) {
 						<h2>Categories</h2>
 						<div className={card.grid}>
 							{categories.map((category) => {
-								console.log(category);
 								return (
 									<a
 										href={`/categories/${category.id}`}
@@ -129,7 +122,7 @@ export default function Search({ articles, videos, categories }) {
 				)}
 
 				{noResultsFound && (
-					<p>
+					<p className={styles.noResults}>
 						Oh no! No results were found for &quot;{term}&quot;. Try searching
 						for something else.
 					</p>
@@ -213,5 +206,5 @@ export async function getServerSideProps(ctx) {
 	categories = categories[0].data;
 	videos = videos[0].data;
 
-	return { props: { articles, videos, categories } };
+	return { props: { articles, videos, categories, term } };
 }

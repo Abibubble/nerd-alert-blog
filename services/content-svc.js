@@ -13,7 +13,7 @@ const contentSvc = async (model, query) => {
 		url += `?${query}`;
 	}
 
-	console.log(url);
+	console.log(`Fetching results from ${url}`);
 
 	try {
 		const cmsResponse = await axios
