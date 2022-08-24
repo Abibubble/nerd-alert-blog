@@ -38,7 +38,6 @@ This is a informative site, containing blogs and videos by the members of NerdAl
   - [Languages](#languages)
   - [Workspace](#workspace)
   - [Version Control](#version-control)
-  - [Wireframing](#wireframing)
   - [Responsive Design](#responsive-design)
   - [Documentation](#documentation)
   - [Site Design](#site-design)
@@ -255,7 +254,7 @@ Strapi was used to store data for this site in a PostgreSQL database. Informatio
 
 This site was deployed to Vercel by following these steps:
 
-1. Login or sign up to [Vercel](https://www.heroku.com).
+1. Login or sign up to [Vercel](https://vercel.com/).
 2. Select 'Add New...' in the top right of your dashboard, then select 'Project'.
 3. Connect your GitHub account to Vercel if you didn't do it while creating your Vercel account.
 4. Search for the GitHub repo for this project.
@@ -271,7 +270,6 @@ This site was deployed to Vercel by following these steps:
 1. Login or Sign Up to [GitHub](www.github.com).
 2. On GitHub, go to [Abibubble/nerd-alert-blog](https://github.com/Abibubble/nerd-alert-blog).
 3. In the top right, click "Fork".
-4. Follow the deployment steps listed above.
 
 ### Making a Local Clone
 
