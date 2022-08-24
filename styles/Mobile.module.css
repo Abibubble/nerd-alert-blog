@@ -1,7 +1,7 @@
 .mobileHeader {
 	height: 80px;
 	display: grid;
-	grid-template-areas: 'logo . burger';
+	grid-template-areas: 'logo burger';
 }
 
 .logoContainer {
@@ -106,9 +106,13 @@
 	border-radius: 4px;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (min-width: 600px) {
 	.mobileHeader {
-		grid-template-areas: 'logo burger';
+		grid-template-areas: 'logo . burger';
+	}
+
+	.visibleMainNav {
+		width: 50%;
 	}
 }
 
