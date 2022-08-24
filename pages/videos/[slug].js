@@ -14,7 +14,7 @@ export default function SingleVideo(video) {
 				<div className={styles.container}>
 					<h2 className={styles.articleTitle}>{video.title}</h2>
 					<p className={styles.authorName}>{video.author.name}</p>
-					<video width="500px" controls>
+					<video className={styles.video} controls>
 						<source src={video.video[0].url} />
 						Your browser does not support the video tag
 					</video>

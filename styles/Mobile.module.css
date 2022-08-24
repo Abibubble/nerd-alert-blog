@@ -32,17 +32,22 @@
 }
 
 .burgerIcon {
-	height: 48px;
-	width: 48px;
+	height: 40px;
+	width: 40px;
+}
+
+.burgerIcon path {
+	stroke: white;
 }
 
 .visibleMainNav {
-	padding: 16px 16px 32px;
+	padding: 0 0 16px 0;
 	position: absolute;
 	right: 0;
 	top: 80px;
 	background-color: #6e41a4;
-	width: 50%;
+	width: 75%;
+	border: 2px solid #6e41a4;
 }
 
 .hiddenMainNav {
@@ -68,8 +73,9 @@
 	line-height: 48px;
 }
 
-.visibleMainNav li:hover {
+.visibleMainNav li:not(:last-child):hover {
 	background-color: #baacd8;
+	color: #000000;
 }
 
 .visibleMainNav ul:last-child:hover {
@@ -88,7 +94,7 @@
 	height: 48px;
 	align-self: center;
 	width: 100%;
-	margin-top: 16px;
+	padding: 0 16px;
 }
 
 .search input {

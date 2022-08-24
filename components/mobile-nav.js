@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/router';
 import mobile from '@/styles/Mobile.module.css';
 import { FaSearch, FaBars } from 'react-icons/fa';
+import { GrClose } from 'react-icons/gr';
 
 export default function Header() {
 	const [isNavExpanded, setIsNavExpanded] = useState(false);
@@ -38,7 +39,11 @@ export default function Header() {
 					setIsNavExpanded(!isNavExpanded);
 				}}
 			>
-				<FaBars className={mobile.burgerIcon} />
+				{isNavExpanded ? (
+					<GrClose className={mobile.burgerIcon} />
+				) : (
+					<FaBars className={mobile.burgerIcon} />
+				)}
 			</button>
 
 			<nav

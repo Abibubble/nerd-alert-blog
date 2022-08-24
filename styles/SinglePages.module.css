@@ -1,6 +1,6 @@
 .container {
 	text-align: center;
-	padding: 1rem 7rem;
+	padding: 1rem 0;
 }
 
 .title {
@@ -43,23 +43,22 @@
 	vertical-align: bottom;
 }
 
-.authorGrid {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	gap: 8px;
-	align-items: center;
-}
-
 .aboutYou,
 .content {
 	line-height: 1.5;
-	margin-bottom: 32px;
+	margin-bottom: 16px;
 	text-align: left;
 }
 
 .content img {
 	width: 50%;
-	margin-left: 25%;
+	margin: 16px 25% 0 25%;
+}
+
+.authorGrid {
+	display: grid;
+	grid-template-columns: 1fr;
+	align-items: center;
 }
 
 .articleTitle {
@@ -76,6 +75,10 @@
 	margin-bottom: 16px;
 }
 
+.video {
+	width: 100%;
+}
+
 .socialGrid {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
@@ -89,4 +92,24 @@
 	padding: 8px;
 	margin: 0 auto;
 	position: relative;
+}
+
+@media screen and (min-width: 768px) {
+	.container {
+		padding: 1rem 7rem;
+	}
+
+	.aboutYou,
+	.content {
+		margin-bottom: 32px;
+	}
+
+	.video {
+		width: 500px;
+	}
+
+	.authorGrid {
+		grid-template-columns: 1fr 1fr;
+		gap: 8px;
+	}
 }
