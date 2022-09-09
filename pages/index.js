@@ -43,7 +43,7 @@ export default function Home({ allArticles }) {
 
 export async function getServerSideProps() {
 	const query = {
-		sort: 'publishedAt',
+		sort: 'publishedAt:asc',
 		pagination: {
 			pageSize: 6,
 			page: 1,

@@ -4,6 +4,8 @@
 ![GitHub last commit](https://img.shields.io/github/last-commit/abibubble/nerd-alert-blog)
 ![GitHub language count](https://img.shields.io/github/languages/count/abibubble/nerd-alert-blog)
 ![GitHub top language](https://img.shields.io/github/languages/top/abibubble/nerd-alert-blog)
+<img src="https://img.shields.io/badge/yarn-~1.22.15-blue" />
+[![NextJS](https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)](https://nextjs.org/)
 ![GitHub forks](https://img.shields.io/github/forks/abibubble/nerd-alert-blog?style=social)
 
 [Here is a link to the deployed site](https://nerd-alert-blog.vercel.app/)
@@ -71,7 +73,8 @@ This is a informative site, containing blogs and videos by the members of NerdAl
 
 ## Local Development
 
-- Run the development server with `npm run dev`
+- Run `npm run install` to install the dependencies.
+- Run the development server with `npm run dev`.
 - Open [http://localhost:3000](http://localhost:3000) in your browser.
 - The site auto-updates when you save.
 

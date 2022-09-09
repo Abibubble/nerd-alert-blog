@@ -8,6 +8,8 @@ const contentSvc = async (model, query) => {
 
 	let url = `${API_URL}/api/${model}`;
 
+	console.log(`Calling on ${url}`);
+
 	if (query) {
 		query = qs.stringify(query, { encodeValuesOnly: true });
 		url += `?${query}`;
